@@ -1,9 +1,10 @@
 package com.example.vertragsdatenbank.model;
+
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -44,11 +45,15 @@ public class Vertrag implements Serializable {
     @JoinColumn(name = "status_ID", nullable = false)
     private Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "vertragsart_ID", nullable = false)
+    private Vertragsart vertragsart;
+
     /**
      * Default-Konstruktor
      */
-public Vertrag () {
+    public Vertrag() {
 
-}
+    }
 
 }
