@@ -1,11 +1,15 @@
 package com.example.vertragsdatenbank.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Set;
 
+@Entity
+@Data
 public class Vertragsart implements Serializable {
 
     @Id
