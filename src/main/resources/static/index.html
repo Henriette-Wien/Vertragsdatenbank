@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Vertragsdatenbank</title>
-    <link href="logo.png" rel="shortcut icon"/>
+    <link href="logo.jpeg" rel="shortcut icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
     <!-- Klasse App: Steuert die gesamte Anwendung -->
@@ -47,13 +47,16 @@
             let pages = [{
                 url: "^/$",
                 klass: PageOverview,
-            },{
+            }, {
                 url: "^/Collection/$",
                 klass: Collection,
-            },{
+            }, {
                 url: "^/Contract/(.*)$",
                 klass: PageDetail,
-            },{
+            }, {
+                url: "^/post/(.*)$",
+                klass: Post,
+            }, {
                 url: ".*",
                 klass: PageNotFound,
             }];
@@ -71,7 +74,7 @@
 <header>
     <nav>
         <!-- Logo, Zurück-Button und Titel der Seite -->
-        <img class="logo" src="logo.png" alt="Logo" />
+        <img alt="Logo" class="logo" src="logo.jpeg"/>
 
 
         <ul class="menu-left">
@@ -124,24 +127,12 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Asien</a>
                 <div class="dropdown-menu">
-                    <a href="#/Country/CNA" class="dropdown-item" >China</a>
-                    <a href="#/Country/IND" class="dropdown-item" >Indien</a>
-                    <a href="#/Country/JA" class="dropdown-item" >Japan</a>
-                    <a href="#/Country/SC" class="dropdown-item" >Südkorea</a>
+                    <a class="dropdown-item" href="#/Country/CNA">China</a>
+                    <a class="dropdown-item" href="#/Country/IND">Indien</a>
+                    <a class="dropdown-item" href="#/Country/JA">Japan</a>
+                    <a class="dropdown-item" href="#/Country/SC">Südkorea</a>
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Europa</a>
-                <div class="dropdown-menu">
-                    <a href="#/Country/DE" class="dropdown-item">Deutschland</a>
-                    <a href="#/Country/FR" class="dropdown-item">Frankreich</a>
-                    <a href="#/Country/NL" class="dropdown-item">Niederlande</a>
-                    <a href="#/Country/SE" class="dropdown-item">Schweden</a>
-                    <a href="#/Country/IT" class="dropdown-item">Italien</a>
-                    <a href="#/Country/GR" class="dropdown-item">Griechenland</a>
-                </div>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#/Contract/">Neuer Vertrag</a></li>
+            <li class="nav-item"><a class="nav-link" href="#/post/">Neuer Vertrag</a></li>
         </ul>
     </nav>
     <!-- Navbar Ende -->

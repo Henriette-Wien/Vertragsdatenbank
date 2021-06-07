@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<header>
+    <h1>Datenbankeintrag des Vertrags erstellen</h1>
+</header>
+
+<!-- Formular zur Vertragseingabe -->
+<main>
+    <form id="post">
+        <label class="h2" form="post">Vertrag hinzuf&uuml;gen</label>
+
+        <label for="name">Name</label>
+        <input id="name" maxlength="30" name="name" required type="text">
+
+        <label for="laufzeit">Vertragslaufzeit in Monaten</label>
+        <input id="laufzeit" name="laufzeit" required type="number">
+
+        <label for="bedingungen">Bedingungen</label>
+        <input id="bedingungen" name="bedingungen" type="text">
+
+        <label for="ansprechperson">Ansprechperson</label>
+        <input id="ansprechperson" name="ansprechperson" type="text">
+
+        <label for="abschlussdatum">Abschlussdatum</label>
+        <input id="abschlussdatum" name="abschlussdatum" type="date">
+
+        <form>
+            <input id="myFile" name="filename" type="file">
+            <input type="submit">
+        </form>
+
+        <label for="vertragsart">Vertragsart</label>
+        <select id="vertragsart" name="vertragsart" required>
+            <option value="AR">Arbeitsvertrag</option>
+            <option value="SO">Softwarevertrag</option>
+            <option value="DI">Dienstleistungsvertrag</option>
+            <option value="VE">Versicherung</option>
+        </select>
+
+
+        <p>Blogeintrag</p>
+        <textarea cols="25" id="content" name="Blogeintrag" required rows="5"></textarea>
+
+        <button type="reset">Eingaben zur&uuml;cksetzen</button>
+        <button id="button-submit" type="button">Eingaben absenden</button>
+    </form>
+</main>
+
+
