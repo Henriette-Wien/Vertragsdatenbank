@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class VertragController {
     // Dependency-Injection der Service-Klasse
     @Autowired
-    private VertragService vertragService;
+    protected VertragService vertragService;
 
     @GetMapping
     public VertragRepository getVertrag() {

@@ -2,7 +2,7 @@
 let db;
 
 /**
- * Klasse Post: Stellt die BLogbeitrag Erstellung der App zur Verfügung
+ * Klasse Post: Stellt die Vertragseintrag-Erstellung der App zur Verfügung
  */
 class Post {
     /**
