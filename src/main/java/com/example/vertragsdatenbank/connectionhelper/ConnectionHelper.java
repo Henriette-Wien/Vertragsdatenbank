@@ -7,8 +7,6 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
 public class ConnectionHelper {
-
-
     ConnectionString connString = new ConnectionString(
             "mongodb+srv://sp5pl:sp5@vertragsdatenbank.ihvcb.mongodb.net/Vertragsdatenbank?retryWrites=true&w=majority"
     );
@@ -19,5 +17,7 @@ public class ConnectionHelper {
 
     MongoClient mongoClient = MongoClients.create(
             "mongodb+srv://sp5pl:sp5@vertragsdatenbank.ihvcb.mongodb.net/Vertragsdatenbank?retryWrites=true&w=majority");
-    MongoDatabase database = mongoClient.getDatabase("test");
+    MongoDatabase database = mongoClient.getDatabase("Vertragsdatenbank");
+
+
 }
