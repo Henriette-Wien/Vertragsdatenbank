@@ -12,7 +12,7 @@
     <artifactId>VertragsDB</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>VertragsDB</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Software Engineering Project Vertragsdatenbank</description>
     <properties>
         <java.version>16</java.version>
     </properties>
@@ -35,6 +35,15 @@
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>
             <version>4.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-core</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,5 +1,6 @@
 package com.example.vertragsdb;
 
+import com.example.vertragsdb.connectionhelper.ConnectionHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,4 +11,5 @@ public class VertragsDbApplication {
         SpringApplication.run(VertragsDbApplication.class, args);
     }
 
+    ConnectionHelper connectionHelper = new ConnectionHelper();
 }
