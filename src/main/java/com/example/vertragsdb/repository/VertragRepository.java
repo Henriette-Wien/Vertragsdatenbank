@@ -20,6 +20,8 @@ public interface VertragRepository extends MongoRepository<Vertrag, String> {
 
     List<Vertrag> findById(@Param("id") ObjectId id);
 
+    List<Vertrag> findByName(@Param("name") String name);
+
     List<Vertrag> findByAnsprechperson(@Param("ansprechperson") String ansprechperson);
 
 }
