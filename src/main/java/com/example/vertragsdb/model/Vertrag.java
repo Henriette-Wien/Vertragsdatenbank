@@ -27,4 +27,75 @@ public class Vertrag {
 
     }
 
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public Date getAbschlussdatum() {
+        return abschlussdatum;
+    }
+
+    public void setAbschlussdatum(Date abschlussdatum) {
+        this.abschlussdatum = abschlussdatum;
+    }
+
+    public String getAnsprechperson() {
+        return ansprechperson;
+    }
+
+    public void setAnsprechperson(String ansprechperson) {
+        this.ansprechperson = ansprechperson;
+    }
+
+    public String getBedingungen() {
+        return bedingungen;
+    }
+
+    public void setBedingungen(String bedingungen) {
+        this.bedingungen = bedingungen;
+    }
+
+    public String getKosten() {
+        return kosten;
+    }
+
+    public void setKosten(String kosten) {
+        this.kosten = kosten;
+    }
+
+    public String getLaufzeit() {
+        return laufzeit;
+    }
+
+    public void setLaufzeit(String laufzeit) {
+        this.laufzeit = laufzeit;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Object getVertragspartner() {
+        return vertragspartner;
+    }
+
+    public void setVertragspartner(Object vertragspartner) {
+        this.vertragspartner = vertragspartner;
+    }
 }
