@@ -11,5 +11,5 @@ public class VertragsDbApplication {
         SpringApplication.run(VertragsDbApplication.class, args);
     }
 
-    ConnectionHelper connectionHelper = new ConnectionHelper();
+   ConnectionHelper connectionHelper = new ConnectionHelper();
 }
