@@ -17,9 +17,6 @@ public class VertragServiceImpl implements VertragService {
     @Autowired
     private VertragRepository vertragRepository;
 
-    public VertragRepository getVertragRepository() {
-        return vertragRepository;
-    }
 
     @Override
     public void createVertrag(Vertrag vertrag) {
