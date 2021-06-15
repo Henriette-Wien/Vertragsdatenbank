@@ -1,34 +1,52 @@
 package com.example.vertragsdb.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.vertragsdb.model.Vertrag;
+import com.example.vertragsdb.repository.VertragRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * HTTP REST-Controller für einen einfachen Webservice mit Dependency Injection der Service-Klasse
  */
 
 @RestController
-@RequestMapping("${spring.data.rest.basePath}/vertrag/{id}")
+@RequestMapping("${spring.data.rest.basePath}")
 public class VertragController {
 
-/*
+
     private final VertragRepository vertragRepository;
 
-    public VertragController(VertragRepository vertragRepository){this.vertragRepository = vertragRepository;}
+    public VertragController(VertragRepository vertragRepository) {
+        this.vertragRepository = vertragRepository;
+    }
 
     @PostMapping("/vertrag")
-    public Vertrag saveVertrag(@RequestBody Vertrag vertrag) {return vertragRepository.save(vertrag);}
+    public Vertrag saveVertrag(@RequestBody Vertrag vertrag) {
+        return vertragRepository.save(vertrag);
+    }
 
+    @GetMapping("/vertrag")
+    public List<Vertrag> getAllVertraege() {
+        return vertragRepository.findAll();
+    }
 
-   @GetMapping("/vertrag/{id}")
-    public VertragRepository getVertrag(@PathVariable ObjectId id) {
+    @GetMapping("/vertrag/{id}")
+    public Optional<Vertrag> getVertrag(@PathVariable String id) {
         return vertragRepository.findById(id);
     }
 
-    @GetMapping
-    public List<Vertrag> getAllVerträge(){
+    @PutMapping("/vertrag/{id}")
+    public Vertrag updateVertrag(@PathVariable String id, @RequestBody Vertrag vertrag) {
+        vertrag.setId(id);
+        return vertragRepository.save(vertrag);
+    }
 
-    }*/
-
+    @DeleteMapping("/vertrag/{id}")
+    public void deleteVertrag(@PathVariable String id) {
+        vertragRepository.deleteById(id);
+    }
 }
 
