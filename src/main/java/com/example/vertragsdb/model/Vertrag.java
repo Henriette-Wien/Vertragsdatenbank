@@ -19,7 +19,16 @@ public class Vertrag {
     private String laufzeit;
     private String name;
     private String status;
-    private Object vertragspartner;
+    private Vertragspartner vertragspartner;
+
+
+    public Vertragspartner getVertragspartner() {
+        return vertragspartner;
+    }
+
+    public void setVertragspartner(Vertragspartner vertragspartner) {
+        this.vertragspartner = vertragspartner;
+    }
 
 
     /**
@@ -93,11 +102,4 @@ public class Vertrag {
         this.status = status;
     }
 
-    public Object getVertragspartner() {
-        return vertragspartner;
-    }
-
-    public void setVertragspartner(Object vertragspartner) {
-        this.vertragspartner = vertragspartner;
-    }
 }

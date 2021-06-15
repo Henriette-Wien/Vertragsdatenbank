@@ -23,6 +23,6 @@ public interface VertragRepository extends MongoRepository<Vertrag, String> {
 
     List<Vertrag> findByAnsprechperson(String ansprechperson);
 
-    Vertrag save(Vertrag vertrag);
+   // Vertrag save(Vertrag vertrag);
 
 }
