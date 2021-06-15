@@ -1,22 +1,18 @@
 package com.example.vertragsdb.service;
 
-import com.example.vertragsdb.repository.VertragRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.vertragsdb.model.Vertrag;
 
-import java.io.Serializable;
+import java.util.List;
+import java.util.Optional;
 
-/**
- * Service-Klasse enthält die Geschäftslogik
- */
-@Service
-public class VertragService implements Serializable {
+public interface VertragService {
+    public void createVertrag(Vertrag vertrag);
 
-    @Autowired
-    private VertragRepository vertragRepository;
+    public Optional<Vertrag> getVertragById(String id);
 
-    public VertragRepository getVertragRepository() {
-        return vertragRepository;
-    }
+    public List<Vertrag> getAllVerträge();
 
+    public void updateVertrag(Vertrag vertrag);
+
+    public void deleteVertrag(String id);
 }

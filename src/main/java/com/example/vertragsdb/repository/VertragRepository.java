@@ -1,11 +1,11 @@
 package com.example.vertragsdb.repository;
 
 import com.example.vertragsdb.model.Vertrag;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
+
 
 /**
  * Einfaches Spring Data REST Repository, das den Zugriff auf Vertragsdatenbank über
@@ -17,12 +17,7 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "vertrag", path = "vertrag")
 public interface VertragRepository extends MongoRepository<Vertrag, String> {
 
-    List<Vertrag> findById(ObjectId id);
-
-    List<Vertrag> findByName(String name);
-
-    List<Vertrag> findByAnsprechperson(String ansprechperson);
-
-   // Vertrag save(Vertrag vertrag);
+    @Override
+    List<Vertrag> findAll();
 
 }
