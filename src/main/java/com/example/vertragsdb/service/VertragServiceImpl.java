@@ -29,7 +29,7 @@ public class VertragServiceImpl implements VertragService {
     }
 
     @Override
-    public List<Vertrag> getAllVerträge() {
+    public List<Vertrag> getAllVertraege() {
         return vertragRepository.findAll();
     }
 

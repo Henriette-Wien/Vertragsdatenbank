@@ -10,7 +10,7 @@ public interface VertragService {
 
     public Optional<Vertrag> getVertragById(String id);
 
-    public List<Vertrag> getAllVerträge();
+    public List<Vertrag> getAllVertraege();
 
     public void updateVertrag(Vertrag vertrag);
 

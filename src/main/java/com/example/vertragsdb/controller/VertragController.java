@@ -2,6 +2,8 @@ package com.example.vertragsdb.controller;
 
 import com.example.vertragsdb.model.Vertrag;
 import com.example.vertragsdb.repository.VertragRepository;
+import com.example.vertragsdb.service.VertragServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,10 +18,16 @@ import java.util.Optional;
 @RequestMapping("${spring.data.rest.basePath}")
 public class VertragController {
 
+    @Autowired
+    private VertragServiceImpl vertragService;
 
-    private final VertragRepository vertragRepository;
+    @GetMapping("")
+    public List<Vertrag> getAllVertraege() {
+        return this.vertragService.getAllVertraege();
+    }
 
-    public VertragController(VertragRepository vertragRepository) {
+
+    /*public VertragController(VertragRepository vertragRepository) {
         this.vertragRepository = vertragRepository;
     }
 
@@ -28,10 +36,7 @@ public class VertragController {
         return vertragRepository.save(vertrag);
     }
 
-    @GetMapping("/vertrag")
-    public List<Vertrag> getAllVertraege() {
-        return vertragRepository.findAll();
-    }
+
 
     @GetMapping("/vertrag/{id}")
     public Optional<Vertrag> getVertrag(@PathVariable String id) {
@@ -48,5 +53,7 @@ public class VertragController {
     public void deleteVertrag(@PathVariable String id) {
         vertragRepository.deleteById(id);
     }
+     */
+
 }
 
