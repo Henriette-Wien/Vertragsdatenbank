@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AlleVertraege from "./components/AlleVertraege";
 import VertragUebersicht from "./components/VertragUebersicht";
 import VertragAnlegen from "./components/VertragAnlegen";
+import Archiv from "./components/Archiv";
 
 
 class App extends Component {
@@ -15,7 +16,6 @@ class App extends Component {
                     <a href="/" className="navbar-brand">
                         Vertragsdatenbank
                     </a>
-                </nav>
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <Link to={"/vertrag"} className="nav-link">
@@ -27,12 +27,19 @@ class App extends Component {
                             Vertrag Anlegen
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to={"/archiv"} className="nav-link">
+                            Archiv
+                        </Link>
+                    </li>
                 </div>
+                </nav>
                 <div className="container mt-3">
                     <Switch>
                         <Route exact path={["/", "/vertrag"]} component={AlleVertraege}/>
                         <Route exact path="/add" component={VertragAnlegen}/>
                         <Route path="/vertrag/:id" component={VertragUebersicht}/>
+                        <Route path="/archiv" component={Archiv}/>
                     </Switch>
                 </div>
             </div>
