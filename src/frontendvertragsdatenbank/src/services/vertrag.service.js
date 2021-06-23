@@ -1,6 +1,6 @@
 import http from "../http-common";
 
-class VertragDataService {
+class VertragService {
     getAll() {
         return http.get("/vertrag");
     }
@@ -22,4 +22,4 @@ class VertragDataService {
     }
 }
 
-export default new VertragDataService();
+export default new VertragService();
