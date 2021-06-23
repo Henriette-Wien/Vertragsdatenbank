@@ -11,6 +11,14 @@ export default class VertragAnlegen extends Component {
         this.onChangeKosten = this.onChangeKosten.bind(this);
         this.onChangeBedingung = this.onChangeBedingung.bind(this);
         this.onChangeAnsprechperson = this.onChangeAnsprechperson.bind(this);
+        this.onChangeVertragspartnerName = this.onChangeVertragspartnerName.bind(this);
+        this.onChangeVertragspartnerStrasse = this.onChangeVertragspartnerStrasse.bind(this);
+        this.onChangeVertragspartnerHausnummer = this.onChangeVertragspartnerHausnummer.bind(this);
+        this.onChangeVertragspartnerPostleitzahl = this.onChangeVertragspartnerPostleitzahl.bind(this);
+        this.onChangeVertragspartnerStadt = this.onChangeVertragspartnerStadt.bind(this);
+        this.onChangeAnsprechpartner = this.onChangeAnsprechpartner.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangeTelefon = this.onChangeTelefon.bind(this);
         this.saveVertrag = this.saveVertrag.bind(this);
         this.newVertrag = this.newVertrag.bind(this);
 
@@ -18,6 +26,9 @@ export default class VertragAnlegen extends Component {
             name: '',
             bedingung: '',
             kosten: '',
+            laufzeit: '',
+            status: '',
+            abschlussdatum: '',
             ansprechperson: "",
             vertragspartnerName: "",
             vertragspartnerStrasse: "",
@@ -25,7 +36,7 @@ export default class VertragAnlegen extends Component {
             vertragspartnerPostleitzahl: "",
             vertragspartnerStadt: "",
             ansprechpartner: "",
-            email: "",
+            mail: "",
             telefon: "",
             submitted: false
 
@@ -63,12 +74,27 @@ export default class VertragAnlegen extends Component {
         });
     }
 
+    onChangeVertragspartnerName(e) {
+        this.setState({
+            vertragspartnerName: e.target.value
+        });
+    }
+
+    onChangeVertragspartnerStrasse(e) {
+        this.setState({
+            vertragspartnerStrasse: e.target.value
+        });
+    }
+
     saveVertrag() {
         var data = {
             name: this.state.name,
             bedingung: this.state.bedingung,
             kosten: this.state.kosten,
-            ansprechperson: this.state.ansprechperson
+            ansprechperson: this.state.ansprechperson,
+            vertragspartnerName: this.state.vertragspartnerName,
+            vertragspartnerStrasse: this.state.vertragspartnerStrasse,
+            vertragspartnerHausnummer: this.state.vertragspartnerHausnummer
         };
 
         VertragService.create(data)
@@ -79,7 +105,9 @@ export default class VertragAnlegen extends Component {
                     bedingung: response.data.bedingung,
                     kosten: response.data.kosten,
                     ansprechperson: response.data.ansprechperson,
-                    published: response.data.published,
+                    vertragspartnerName: response.data.vertragspartnerName,
+                    vertragspartnerStrasse: response.data.vertragspartnerStrasse,
+                    vertragspartnerHausnummer: response.data.vertragspartnerHausnummer,
 
                     submitted: true
                 });
@@ -111,7 +139,6 @@ export default class VertragAnlegen extends Component {
 
     render() {
         return (
-
             <div className="submit-form">
                 {this.state.submitted ? (
                     <div>
@@ -162,6 +189,34 @@ export default class VertragAnlegen extends Component {
                                 onChange={this.onChangeKosten}
                                 name="kosten"
                                 placeholder="Kosten"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="ansprechperson">Ansprechperson intern</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="ansprechperson"
+                                required
+                                value={this.state.ansprechperson}
+                                onChange={this.onChangeAnsprechperson}
+                                name="ansprechperson"
+                                placeholder="Ansprechperson eintragen"
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="vertragspartnerName">Name des Vertragspartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="vertragspartnerName"
+                                required
+                                value={this.state.vertragspartnerName}
+                                onChange={this.onChangeVertragspartnerName}
+                                name="vertragspartnerName"
+                                placeholder="Vertragspartner eintragen"
                             />
                         </div>
 
