@@ -36,9 +36,9 @@ class App extends Component {
                 </nav>
                 <div className="container mt-3">
                     <Switch>
-                        <Route exact path={["/", "/vertrag"]} component={AlleVertraege}/>
+                        <Route exact path={"/"} component={VertragUebersicht}/>
                         <Route exact path="/add" component={VertragAnlegen}/>
-                        <Route path="/vertrag/:id" component={VertragUebersicht}/>
+                        <Route path="/vertrag/" component={AlleVertraege}/>
                         <Route path="/archiv" component={Archiv}/>
                     </Switch>
                 </div>

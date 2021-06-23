@@ -15,10 +15,10 @@ export default class VertragAnlegen extends Component {
         this.onChangeVertragspartnerStrasse = this.onChangeVertragspartnerStrasse.bind(this);
         this.onChangeVertragspartnerHausnummer = this.onChangeVertragspartnerHausnummer.bind(this);
         this.onChangeVertragspartnerPostleitzahl = this.onChangeVertragspartnerPostleitzahl.bind(this);
-        this.onChangeVertragspartnerStadt = this.onChangeVertragspartnerStadt.bind(this);
+        /*this.onChangeVertragspartnerStadt = this.onChangeVertragspartnerStadt.bind(this);
         this.onChangeAnsprechpartner = this.onChangeAnsprechpartner.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeTelefon = this.onChangeTelefon.bind(this);
+        this.onChangeTelefon = this.onChangeTelefon.bind(this); */
         this.saveVertrag = this.saveVertrag.bind(this);
         this.newVertrag = this.newVertrag.bind(this);
 
@@ -86,6 +86,18 @@ export default class VertragAnlegen extends Component {
         });
     }
 
+    onChangeVertragspartnerHausnummer(e) {
+        this.setState({
+            vertragspartnerHausnummer: e.target.value
+        });
+    }
+
+    onChangeVertragspartnerPostleitzahl(e) {
+        this.setState({
+            vertragspartnerPostleitzahl: e.target.value
+        });
+    }
+
     saveVertrag() {
         var data = {
             name: this.state.name,
@@ -94,7 +106,8 @@ export default class VertragAnlegen extends Component {
             ansprechperson: this.state.ansprechperson,
             vertragspartnerName: this.state.vertragspartnerName,
             vertragspartnerStrasse: this.state.vertragspartnerStrasse,
-            vertragspartnerHausnummer: this.state.vertragspartnerHausnummer
+            vertragspartnerHausnummer: this.state.vertragspartnerHausnummer,
+            vertragspartnerPostleitzahl: this.state.vertragspartnerPostleitzahl
         };
 
         VertragService.create(data)
@@ -108,6 +121,7 @@ export default class VertragAnlegen extends Component {
                     vertragspartnerName: response.data.vertragspartnerName,
                     vertragspartnerStrasse: response.data.vertragspartnerStrasse,
                     vertragspartnerHausnummer: response.data.vertragspartnerHausnummer,
+                    vertragspartnerPostleitzahl: response.data.vertragspartnerPostleitzahl,
 
                     submitted: true
                 });
