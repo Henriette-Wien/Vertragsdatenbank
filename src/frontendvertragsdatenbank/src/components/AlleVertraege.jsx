@@ -9,7 +9,7 @@ function AlleVertraege() {
     }])
 
     useEffect(() => {
-        fetch("/Vertrag").then(res => {
+        fetch("/vertrag").then(res => {
             if (res.ok) {
                 return res.json()
             }

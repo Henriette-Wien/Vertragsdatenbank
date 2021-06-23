@@ -32,18 +32,18 @@ public class VertragController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/vertrag/{id}")
     public Optional<Vertrag> getVertrag(@PathVariable String id) {
         return this.vertragService.getVertragById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/vertrag/{id}")
     public void updateVertrag(@PathVariable String id, @RequestBody Vertrag vertrag) {
         vertrag.setId(id);
         this.vertragService.updateVertrag(vertrag);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/vertrag/{id}")
     public void deleteVertrag(@PathVariable String id) {
         this.vertragService.deleteVertrag(id);
     }
