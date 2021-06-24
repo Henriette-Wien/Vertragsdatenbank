@@ -1,11 +1,13 @@
 package com.example.vertragsdb;
 
-import com.example.vertragsdb.connectionhelper.ConnectionHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
+/**
+ * fast and hassle-free Spring Boot build
+ */
 
 @SpringBootApplication
 @ComponentScan({"com"})
