@@ -9,14 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Service-Klasse enthält die Geschäftslogik
+ * Autowired in VertragController
  */
 @Service
 public class VertragServiceImpl implements VertragService {
 
     @Autowired
     private VertragRepository vertragRepository;
-
 
     @Override
     public void createVertrag(Vertrag vertrag) {

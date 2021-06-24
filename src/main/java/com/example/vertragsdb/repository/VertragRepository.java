@@ -8,16 +8,19 @@ import java.util.List;
 
 
 /**
- * Einfaches Spring Data REST Repository, das den Zugriff auf Vertragsdatenbank über
- * den REST-Webservice erlaubt.Spring erzeugt automatisch
- * eine abgeleitete Klasse mit den üblichen Methoden zum Lesen, Schreiben und
- * Löschen von Einträgen.
+ * repository to interact with Tutorials from the database.
+ * In repository package, create VertragRepository interface that extends MongoRepository
+ *
+ * Enables use of MongoRepository’s methods:
+ * save(), findOne(), findById(),
+ * findAll(), count(), delete(), deleteById()…
+ * without implementing these methods.
+ *
+ * Implementation of custom methods
+ * e.g. findByArchiviert()
+ *
+ * filter methods
  */
 
 @RepositoryRestResource(collectionResourceRel = "vertrag", path = "vertrag")
-public interface VertragRepository extends MongoRepository<Vertrag, String> {
-
-    @Override
-    List<Vertrag> findAll();
-
-}
+public interface VertragRepository extends MongoRepository<Vertrag, String> { }

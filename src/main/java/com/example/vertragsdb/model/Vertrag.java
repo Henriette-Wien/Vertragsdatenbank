@@ -1,5 +1,8 @@
 package com.example.vertragsdb.model;
 
+/**
+ * data model class corresponds to entity and table Vertrag
+ */
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

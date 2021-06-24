@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * HTTP REST-Controller für einen einfachen Webservice mit Dependency Injection der Service-Klasse
+ * RestController which has request mapping methods for RESTful requests such as:
+ * getAllVertraege, saveVertrag, getVertrag, updateVertrag, deleteVertrag…
  */
 
 @RestController
