@@ -1,7 +1,7 @@
 import http from "../http-common";
 
 class VertragService {
-    getAll() {
+    getAllVertraege() {
         return http.get("/vertrag");
     }
 
