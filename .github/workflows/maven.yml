@@ -24,7 +24,7 @@ jobs:
     - name: Build with Maven
       run: mvn --batch-mode --update-snapshots verify
     - name: Use Node
-        uses: actions/setup-node@v2
+    - uses: actions/setup-node@v2
         with:
           node-version: 7.8.1
       - name: npm ci, build and test
