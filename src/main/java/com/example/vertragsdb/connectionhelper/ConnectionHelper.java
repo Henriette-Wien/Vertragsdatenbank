@@ -25,4 +25,6 @@ public class ConnectionHelper {
                 "mongodb+srv://sp5pl:sp5@vertragsdatenbank.ihvcb.mongodb.net/Vertragsdatenbank?retryWrites=true&w=majority");
         return new SimpleMongoClientDatabaseFactory(mongoClient, "Vertragsdatenbank");
     }
+
+
 }
