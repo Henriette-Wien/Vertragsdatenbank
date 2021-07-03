@@ -1,37 +1,37 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
 
 export default class AlleVertraege extends Component {
     constructor(props) {
         super(props);
-        //this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
+        this.onChangeSearch = this.onChangeSearch.bind(this);
         this.retrieveVertraege = this.retrieveVertraege.bind(this);
         this.refreshList = this.refreshList.bind(this);
         //this.setActiveTutorial = this.setActiveTutorial.bind(this);
         //this.removeAllTutorials = this.removeAllTutorials.bind(this);
-        //this.searchTitle = this.searchTitle.bind(this);
+        this.searchVertragById = this.searchVertragById.bind(this);
 
         this.state = {
             vertraege: [],
-           /* currentVertrag: null,
-            currentIndex: -1,
+            /* currentVertrag: null,
+             currentIndex: -1,
 
-            */
+             */
         };
     }
 
     componentDidMount() {
         this.retrieveVertraege();
     }
- /*
-    onChangeSearchTitle(e) {
-        const searchTitle = e.target.value;
+
+    onChangeSearch(e) {
+        const searchVertragbyId = e.target.value;
 
         this.setState({
-            searchTitle: searchTitle
+            searchVertragById: searchVertragbyId
         });
     }
-  */
+
 
     retrieveVertraege() {
         VertragService.getAllVertraege()
@@ -77,9 +77,9 @@ export default class AlleVertraege extends Component {
     }
 
  */
-/*
-    searchTitle() {
-        TutorialDataService.findByTitle(this.state.searchTitle)
+
+    searchVertragById() {
+        VertragService.getVertragById(this.state.searchVertragById)
             .then(response => {
                 this.setState({
                     tutorials: response.data
@@ -91,64 +91,42 @@ export default class AlleVertraege extends Component {
             });
     }
 
- */
+
 
     render() {
         const { vertraege } = this.state;
         return <div className='container'>
             <h1>Alle Verträge</h1>
-
-            {vertraege.map(vertrag =>
-                <div>
-                    <h1>{vertrag.name}</h1>
-                    <p>{vertrag.bedingung}</p>
-                    <p>{vertrag.kosten}</p>
+            <div className="list row">
+                <div className="col-md-8">
+                    <div className="input-group mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search by Id"
+                            value={this.searchVertragById()}
+                            onChange={this.onChangeSearch}
+                        />
+                        <div className="input-group-append">
+                            <button
+                                className="btn btn-outline-secondary"
+                                type="button"
+                                onClick={this.searchVertragById}
+                            >
+                                Search
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            )}
-
+                {vertraege.map(vertrag =>
+                    <div>
+                        <h1>{vertrag.name}</h1>
+                        <p>{vertrag.bedingung}</p>
+                        <p>{vertrag.kosten}</p>
+                    </div>
+                )}
+            </div>
         </div>
     }
-
-
 }
 
-
-
-/*
-function AlleVertraege() {
-    const [vertraege, setVertrag] = useState([{
-        name: '',
-        bedingung: '',
-        kosten: ''
-    }])
-
-    useEffect(() => {
-        fetch("/vertrag").then(res => {
-            if (res.ok) {
-                return res.json()
-            }
-        }).then(jsonRes => setVertrag(jsonRes));
-    })
-
-
-
-        return <div className='container'>
-            <h1>Alle Verträge</h1>
-
-            {vertraege.map(vertrag =>
-                <div>
-                    <h1>{vertrag.name}</h1>
-                    <p>{vertrag.bedingung}</p>
-                    <p>{vertrag.kosten}</p>
-                </div>
-            )}
-
-        </div>
-
-}
-*/
-/*
-
-export default AlleVertraege;
-
- */

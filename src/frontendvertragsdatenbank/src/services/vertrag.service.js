@@ -5,7 +5,7 @@ class VertragService {
         return http.get("/vertrag");
     }
 
-    get(id) {
+    getVertragById(id) {
         return http.get(`/vertrag/${id}`);
     }
 

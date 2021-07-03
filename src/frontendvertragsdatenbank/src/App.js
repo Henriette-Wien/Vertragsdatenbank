@@ -14,17 +14,17 @@ class App extends Component {
             <div className="App">
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <a href="/" className="navbar-brand">
-                        Vertragsdatenbank
+                        Contract Villain
                     </a>
-                <div className="navbar-nav mr-auto">
-                    <li className="nav-item">
-                        <Link to={"/vertrag"} className="nav-link">
-                            AlleVertrage
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to={"/add"} className="nav-link">
-                            Vertrag Anlegen
+                    <div className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <Link to={"/vertrag"} className="nav-link">
+                                AlleVertrage
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to={"/add"} className="nav-link">
+                                Vertrag Anlegen
                         </Link>
                     </li>
                     <li className="nav-item">
@@ -45,29 +45,6 @@ class App extends Component {
             </div>
         )
     }
-
-
-    /*
-
-
-          <div className="container mt-3">
-            <Switch>
-              <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
-              <Route exact path="/add" component={AddTutorial} />
-              <Route path="/tutorials/:id" component={Tutorial} />
-            </Switch>
-          </div>
-        </div>
-
-  <Route path="/uebersicht" component={VertragUebersicht}/>
-              <Route path="/alleVertraege" component={alleVertraege}/>
-              <Route path="/archiv" component={Archiv}/>
-              <Route path="/vertragAnlegen" component={VertragAnlegen}/>
-
-
-      );
-
-     */
 }
 
 export default App;
