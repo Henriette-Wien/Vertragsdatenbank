@@ -16,7 +16,7 @@ public class Vertrag {
     private String id;
     private Date abschlussdatum;
     private String ansprechperson;
-    private String bedingungen;
+    private String bedingung;
     private String kosten;
     private String laufzeit;
     private String name;
@@ -24,13 +24,7 @@ public class Vertrag {
     private Vertragspartner vertragspartner;
 
 
-    public Vertragspartner getVertragspartner() {
-        return vertragspartner;
-    }
 
-    public void setVertragspartner(Vertragspartner vertragspartner) {
-        this.vertragspartner = vertragspartner;
-    }
 
 
     /**
@@ -38,6 +32,14 @@ public class Vertrag {
      */
     public Vertrag() {
 
+    }
+
+    public Vertragspartner getVertragspartner() {
+        return vertragspartner;
+    }
+
+    public void setVertragspartner(Vertragspartner vertragspartner) {
+        this.vertragspartner = vertragspartner;
     }
 
     public String getId() {
@@ -64,12 +66,12 @@ public class Vertrag {
         this.ansprechperson = ansprechperson;
     }
 
-    public String getBedingungen() {
-        return bedingungen;
+    public String getBedingung() {
+        return bedingung;
     }
 
-    public void setBedingungen(String bedingungen) {
-        this.bedingungen = bedingungen;
+    public void setBedingung(String bedingung) {
+        this.bedingung = bedingung;
     }
 
     public String getKosten() {

@@ -1,6 +1,4 @@
 import React, {useState, Component} from 'react';
-import axios from "axios";
-import {Dropdown} from 'react-bootstrap';
 
 import VertragService from "../services/vertrag.service";
 
@@ -15,10 +13,10 @@ export default class VertragAnlegen extends Component {
         this.onChangeVertragspartnerStrasse = this.onChangeVertragspartnerStrasse.bind(this);
         this.onChangeVertragspartnerHausnummer = this.onChangeVertragspartnerHausnummer.bind(this);
         this.onChangeVertragspartnerPostleitzahl = this.onChangeVertragspartnerPostleitzahl.bind(this);
-        /*this.onChangeVertragspartnerStadt = this.onChangeVertragspartnerStadt.bind(this);
+        this.onChangeVertragspartnerStadt = this.onChangeVertragspartnerStadt.bind(this);
         this.onChangeAnsprechpartner = this.onChangeAnsprechpartner.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeTelefon = this.onChangeTelefon.bind(this); */
+        this.onChangeMail = this.onChangeMail.bind(this);
+        this.onChangeTelefon = this.onChangeTelefon.bind(this);
         this.saveVertrag = this.saveVertrag.bind(this);
         this.newVertrag = this.newVertrag.bind(this);
 
@@ -98,6 +96,30 @@ export default class VertragAnlegen extends Component {
         });
     }
 
+    onChangeVertragspartnerStadt(e) {
+        this.setState({
+            vertragspartnerStadt: e.target.value
+        });
+    }
+
+    onChangeAnsprechpartner(e) {
+        this.setState({
+            ansprechpartner: e.target.value
+        });
+    }
+
+    onChangeMail(e) {
+        this.setState({
+            mail: e.target.value
+        });
+    }
+
+    onChangeTelefon(e) {
+        this.setState({
+            telefon: e.target.value
+        });
+    }
+
     saveVertrag() {
         var data = {
             name: this.state.name,
@@ -107,7 +129,11 @@ export default class VertragAnlegen extends Component {
             vertragspartnerName: this.state.vertragspartnerName,
             vertragspartnerStrasse: this.state.vertragspartnerStrasse,
             vertragspartnerHausnummer: this.state.vertragspartnerHausnummer,
-            vertragspartnerPostleitzahl: this.state.vertragspartnerPostleitzahl
+            vertragspartnerPostleitzahl: this.state.vertragspartnerPostleitzahl,
+            vertragspartnerStadt: this.state.vertragspartnerStadt,
+            ansprechpartner: this.state.ansprechpartner,
+            mail: this.state.mail,
+            telefon: this.state.telefon
         };
 
         VertragService.create(data)
@@ -122,6 +148,10 @@ export default class VertragAnlegen extends Component {
                     vertragspartnerStrasse: response.data.vertragspartnerStrasse,
                     vertragspartnerHausnummer: response.data.vertragspartnerHausnummer,
                     vertragspartnerPostleitzahl: response.data.vertragspartnerPostleitzahl,
+                    vertragspartnerStadt: response.data.vertragspartnerStadt,
+                    ansprechpartner: response.data.ansprechpartner,
+                    mail: response.data.mail,
+                    telefon: response.data.telefon,
 
                     submitted: true
                 });
@@ -231,6 +261,97 @@ export default class VertragAnlegen extends Component {
                                 onChange={this.onChangeVertragspartnerName}
                                 name="vertragspartnerName"
                                 placeholder="Vertragspartner eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="vertragspartnerStrasse">Straße des Vertragspartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="vertragspartnerStrasse"
+                                required
+                                value={this.state.vertragspartnerStrasse}
+                                onChange={this.onChangeVertragspartnerStrasse}
+                                name="vertragspartnerStrasse"
+                                placeholder="Vertragspartner Straße eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="vertragspartnerHausnummer">Hausnummer des Vertragspartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="vertragspartnerHausnummer"
+                                required
+                                value={this.state.vertragspartnerHausnummer}
+                                onChange={this.onChangeVertragspartnerHausnummer}
+                                name="vertragspartnerHausnummer"
+                                placeholder="Vertragspartner Hausnummer eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="vertragspartnerPostleitzahl">Postleitzahl des Vertragspartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="vertragspartnerPostleitzahl"
+                                required
+                                value={this.state.vertragspartnerPostleitzahl}
+                                onChange={this.onChangeVertragspartnerPostleitzahl}
+                                name="vertragspartnerPostleitzahl"
+                                placeholder="Vertragspartner Postleitzahl eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="vertragspartnerStadt">Stadt des Vertragspartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="vertragspartnerStadt"
+                                required
+                                value={this.state.vertragspartnerStadt}
+                                onChange={this.onChangeVertragspartnerStadt}
+                                name="vertragspartnerStadt"
+                                placeholder="Vertragspartner Stadt eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="ansprechpartner">Ansprechpartner des Vertragspartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="ansprechpartner"
+                                required
+                                value={this.state.ansprechpartner}
+                                onChange={this.onChangeAnsprechpartner}
+                                name="ansprechpartner"
+                                placeholder="Ansprechpartner des Vertragspartner eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="mail">Email des Ansprechpartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="ansprechpartner"
+                                required
+                                value={this.state.mail}
+                                onChange={this.onChangeMail}
+                                name="mail"
+                                placeholder="Email der Ansprechpartners eintragen"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="telefon">Telefon des Ansprechpartners</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="telefon"
+                                required
+                                value={this.state.telefon}
+                                onChange={this.onChangeTelefon}
+                                name="telefon"
+                                placeholder="Telefon des Ansprechpartners eintragen"
                             />
                         </div>
 

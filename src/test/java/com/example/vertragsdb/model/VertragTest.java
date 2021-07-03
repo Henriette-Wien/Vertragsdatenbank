@@ -47,11 +47,11 @@ class VertragTest {
     }
 
     @Test
-    void getBedingungen() {
+    void getBedingung() {
     }
 
     @Test
-    void setBedingungen() {
+    void setBedingung() {
     }
 
     @Test
