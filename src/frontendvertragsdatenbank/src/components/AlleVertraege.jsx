@@ -121,8 +121,13 @@ export default class AlleVertraege extends Component {
                 {vertraege.map(vertrag =>
                     <div>
                         <h1>{vertrag.name}</h1>
+                        <p>{vertrag.id}</p>
                         <p>{vertrag.bedingung}</p>
                         <p>{vertrag.kosten}</p>
+                        <p>{vertrag.laufzeit}</p>
+                        <p>{vertrag.ansprechperson}</p>
+                        <p>{vertrag.abschlussdatum}</p>
+                        <p>{vertrag.status}</p>
                     </div>
                 )}
             </div>
