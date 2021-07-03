@@ -21,29 +21,29 @@ public class VertragController {
     @Autowired
     private VertragServiceImpl vertragService;
 
-    @GetMapping("/")
+    @GetMapping("/vertrag")
     public List<Vertrag> getAllVertraege() {
         return this.vertragService.getAllVertraege();
     }
 
-    @PostMapping("/")
+    @PostMapping("/vertrag")
     public void saveVertrag(@RequestBody Vertrag vertrag) {
         this.vertragService.createVertrag(vertrag);
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/vertrag/{id}")
     public Optional<Vertrag> getVertrag(@PathVariable String id) {
         return this.vertragService.getVertragById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/vertrag/{id}")
     public void updateVertrag(@PathVariable String id, @RequestBody Vertrag vertrag) {
         vertrag.setId(id);
         this.vertragService.updateVertrag(vertrag);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/vertrag/{id}")
     public void deleteVertrag(@PathVariable String id) {
         this.vertragService.deleteVertrag(id);
     }

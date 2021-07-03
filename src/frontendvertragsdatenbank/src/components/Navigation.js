@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav, Navbar, Form, FormControl, Button} from 'react-bootstrap';
+import {Button, Form, FormControl, Nav, Navbar} from 'react-bootstrap';
 
 
 function Navigation() {
@@ -7,7 +7,7 @@ function Navigation() {
     return (
 
         <Navbar bg="light" expand="lg">
-            <Navbar.Brand>Vertragsdatenbank</Navbar.Brand>
+            <Navbar.Brand>ContractVillain</Navbar.Brand>
 
             <Navbar.Collapse id="navbarScroll">
                 <Nav
