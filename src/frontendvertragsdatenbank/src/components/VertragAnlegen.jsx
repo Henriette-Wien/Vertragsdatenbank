@@ -7,7 +7,10 @@ export default class VertragAnlegen extends Component {
         super(props);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeKosten = this.onChangeKosten.bind(this);
+        this.onChangeLaufzeit = this.onChangeLaufzeit.bind(this);
         this.onChangeBedingung = this.onChangeBedingung.bind(this);
+        this.onChangeAbschlussdatum = this.onChangeAbschlussdatum.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
         this.onChangeAnsprechperson = this.onChangeAnsprechperson.bind(this);
         this.onChangeVertragspartnerName = this.onChangeVertragspartnerName.bind(this);
         this.onChangeVertragspartnerStrasse = this.onChangeVertragspartnerStrasse.bind(this);
@@ -19,6 +22,9 @@ export default class VertragAnlegen extends Component {
         this.onChangeTelefon = this.onChangeTelefon.bind(this);
         this.saveVertrag = this.saveVertrag.bind(this);
         this.newVertrag = this.newVertrag.bind(this);
+        this.newVertragspartner = this.newVertragspartner.bind(this);
+        this.newAnschrift = this.newAnschrift.bind(this);
+        this.newAnsprechpartner = this.newAnsprechpartner.bind(this);
 
         this.state = {
             name: '',
@@ -28,14 +34,8 @@ export default class VertragAnlegen extends Component {
             status: '',
             abschlussdatum: '',
             ansprechperson: "",
-            vertragspartnerName: "",
-            vertragspartnerStrasse: "",
-            vertragspartnerHausnummer: "",
-            vertragspartnerPostleitzahl: "",
-            vertragspartnerStadt: "",
-            ansprechpartner: "",
-            mail: "",
-            telefon: "",
+
+
             submitted: false
 
             /*id: null,
@@ -60,6 +60,24 @@ export default class VertragAnlegen extends Component {
             bedingung: e.target.value
         });
         console.log("bedingung eingetragen");
+    }
+    onChangeStatus(e) {
+        this.setState({
+            status: e.target.value
+        });
+        console.log("Status eingetragen");
+    }
+    onChangeAbschlussdatum(e) {
+        this.setState({
+            abschlussdatum: e.target.value
+        });
+        console.log("Abschlussdatum eingetragen");
+    }
+    onChangeLaufzeit(e) {
+        this.setState({
+            laufzeit: e.target.value
+        });
+        console.log("Laufzeit eingetragen");
     }
 
     onChangeKosten(e) {
@@ -130,16 +148,11 @@ export default class VertragAnlegen extends Component {
         var data = {
             name: this.state.name,
             bedingung: this.state.bedingung,
+            laufzeit: this.state.laufzeit,
+            status: this.state.status,
+            abschlussdatum: this.state.abschlussdatum,
             kosten: this.state.kosten,
             ansprechperson: this.state.ansprechperson,
-            vertragspartnerName: this.state.vertragspartnerName,
-            vertragspartnerStrasse: this.state.vertragspartnerStrasse,
-            vertragspartnerHausnummer: this.state.vertragspartnerHausnummer,
-            vertragspartnerPostleitzahl: this.state.vertragspartnerPostleitzahl,
-            vertragspartnerStadt: this.state.vertragspartnerStadt,
-            ansprechpartner: this.state.ansprechpartner,
-            mail: this.state.mail,
-            telefon: this.state.telefon
         };
 
         VertragService.create(data)
@@ -148,16 +161,12 @@ export default class VertragAnlegen extends Component {
                     id: response.data.id,
                     name: response.data.name,
                     bedingung: response.data.bedingung,
+                    laufzeit: response.data.laufzeit,
+                    status: response.data.status,
+                    abschlussdatum: response.data.abschlussdatum,
                     kosten: response.data.kosten,
                     ansprechperson: response.data.ansprechperson,
-                    vertragspartnerName: response.data.vertragspartnerName,
-                    vertragspartnerStrasse: response.data.vertragspartnerStrasse,
-                    vertragspartnerHausnummer: response.data.vertragspartnerHausnummer,
-                    vertragspartnerPostleitzahl: response.data.vertragspartnerPostleitzahl,
-                    vertragspartnerStadt: response.data.vertragspartnerStadt,
-                    ansprechpartner: response.data.ansprechpartner,
-                    mail: response.data.mail,
-                    telefon: response.data.telefon,
+
 
                     submitted: true
                 });
@@ -187,13 +196,36 @@ export default class VertragAnlegen extends Component {
         });
     }
 
+    newVertragspartner() {
+        this.setState({
+            name: '',
+            submitted: false
+        });
+    }
+    newAnschrift() {
+        this.setState({
+            strasse: '',
+            nr: '',
+            plz: '',
+            stadt: '',
+            submitted: false
+        });
+    }
+    newAnsprechpartner() {
+        this.setState({
+            name: '',
+            mail: '',
+            tel: '',
+            submitted: false
+        });
+    }
     render() {
         return (
             <div className="submit-form">
                 {this.state.submitted ? (
                     <div>
                         <h4>You submitted successfully!</h4>
-                        <button className="btn btn-success" onClick={this.newVertrag}>
+                        <button className="btn btn-success" onClick={this.newAnschrift}>
                             Neuen Vertrag
                         </button>
                     </div>
@@ -227,7 +259,36 @@ export default class VertragAnlegen extends Component {
                                 placeholder="Bedingung"
                             />
                         </div>
-
+                        <div className="form-group">
+                            <label htmlFor="abschlussdatum">Abschlussdatum</label>
+                            <input
+                                type="date"
+                                className="form-control"
+                                id="abschlussdatum"
+                                required
+                                value={this.state.abschlussdatum}
+                                onChange={this.onChangeAbschlussdatum}
+                                name="abschlussdatum"
+                                placeholder="Abschlussdatum"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="status">Status</label>
+                            <div>
+                            <select>
+                            <option value={this.state.status} onChange={this.onChangeStatus}>Aktiv</option>
+                                <option value="inaktiv">Inaktiv</option>
+                                type="textarea"
+                                className="form-control"
+                                id="status"
+                                required
+                                value={this.state.status}
+                                onChange={this.onChangeStatus}
+                                name="status"
+                                placeholder="Status"
+                            </select>
+                            </div>
+                        </div>
                         <div className="form-group">
                             <label htmlFor="kosten">Kosten</label>
                             <input
@@ -241,6 +302,20 @@ export default class VertragAnlegen extends Component {
                                 placeholder="Kosten"
                             />
                         </div>
+                        <div className="form-group">
+                            <label htmlFor="laufzeit">Laufzeit</label>
+                            <input
+                                type="textarea"
+                                className="form-control"
+                                id="laufzeit"
+                                required
+                                value={this.state.laufzeit}
+                                onChange={this.onChangeLaufzeit}
+                                name="laufzeit"
+                                placeholder="Laufzeit"
+                            />
+                        </div>
+
 
                         <div className="form-group">
                             <label htmlFor="ansprechperson">Ansprechperson intern</label>
@@ -261,7 +336,7 @@ export default class VertragAnlegen extends Component {
                             <input
                                 type="textarea"
                                 className="form-control"
-                                id="vertragspartnerName"
+                                id="vertragspartner.name"
                                 required
                                 value={this.state.vertragspartnerName}
                                 onChange={this.onChangeVertragspartnerName}

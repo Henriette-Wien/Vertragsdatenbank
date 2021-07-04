@@ -159,6 +159,7 @@ export default class AlleVertraege extends Component {
       const { vertraege } = this.state;
       return <div className='container'>
             <h1>Alle Verträge</h1>
+            <input className="form-control" id="myInput" type="text" placeholder="Search.."/>
             <BootstrapTable striped hover keyField='id' data={ vertraege } columns={ columns } />
         </div>
     }
