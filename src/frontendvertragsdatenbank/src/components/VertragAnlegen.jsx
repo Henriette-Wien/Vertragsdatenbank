@@ -233,8 +233,9 @@ export default class VertragAnlegen extends Component {
                     <div>
                         <h1>Vertrag anlegen</h1>
                         <div className="form-group">
-                            <label htmlFor="title">Name</label>
+                            <label htmlFor="title"></label>
                             <input
+                                style={styleFormular}
                                 type="text"
                                 className="form-control"
                                 id="name"
@@ -247,8 +248,8 @@ export default class VertragAnlegen extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="bedingung">Bedingung</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="bedingung"
@@ -260,8 +261,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="abschlussdatum">Abschlussdatum</label>
                             <input
+                                style={styleFormular}
                                 type="date"
                                 className="form-control"
                                 id="abschlussdatum"
@@ -269,29 +270,12 @@ export default class VertragAnlegen extends Component {
                                 value={this.state.abschlussdatum}
                                 onChange={this.onChangeAbschlussdatum}
                                 name="abschlussdatum"
-                                placeholder="Abschlussdatum"
-                            />
+                                placeholder="Abschlussdatum">
+                            </input>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="status">Status</label>
-                            <div>
-                            <select>
-                            <option value={this.state.status} onChange={this.onChangeStatus}>Aktiv</option>
-                                <option value="inaktiv">Inaktiv</option>
-                                type="textarea"
-                                className="form-control"
-                                id="status"
-                                required
-                                value={this.state.status}
-                                onChange={this.onChangeStatus}
-                                name="status"
-                                placeholder="Status"
-                            </select>
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="kosten">Kosten</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="kosten"
@@ -303,8 +287,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="laufzeit">Laufzeit</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="laufzeit"
@@ -318,8 +302,8 @@ export default class VertragAnlegen extends Component {
 
 
                         <div className="form-group">
-                            <label htmlFor="ansprechperson">Ansprechperson intern</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechperson"
@@ -332,8 +316,8 @@ export default class VertragAnlegen extends Component {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="vertragspartnerName">Name des Vertragspartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartner.name"
@@ -345,8 +329,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="vertragspartnerStrasse">Straße des Vertragspartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerStrasse"
@@ -358,8 +342,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="vertragspartnerHausnummer">Hausnummer des Vertragspartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerHausnummer"
@@ -371,8 +355,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="vertragspartnerPostleitzahl">Postleitzahl des Vertragspartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerPostleitzahl"
@@ -384,8 +368,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="vertragspartnerStadt">Stadt des Vertragspartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerStadt"
@@ -397,8 +381,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="ansprechpartner">Ansprechpartner des Vertragspartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechpartner"
@@ -410,8 +394,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="mail">Email des Ansprechpartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechpartner"
@@ -423,8 +407,8 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="telefon">Telefon des Ansprechpartners</label>
                             <input
+                                style={styleFormular}
                                 type="textarea"
                                 className="form-control"
                                 id="telefon"
@@ -435,7 +419,23 @@ export default class VertragAnlegen extends Component {
                                 placeholder="Telefon des Ansprechpartners eintragen"
                             />
                         </div>
-
+                        <div className="form-group">
+                            <div>
+                                <label style={styleStatus}>Status</label>
+                                <select>
+                                    <option value={this.state.status} onChange={this.onChangeStatus}>Aktiv</option>
+                                    <option value="inaktiv">Inaktiv</option>
+                                    type="textarea"
+                                    className="form-control"
+                                    id="status"
+                                    required
+                                    value={this.state.status}
+                                    onChange={this.onChangeStatus}
+                                    name="status"
+                                    placeholder="Status"
+                                </select>
+                            </div>
+                        </div>
                         <button onClick={this.saveVertrag} className="btn btn-success">
                             Vertrag speichern
                         </button>
@@ -445,8 +445,14 @@ export default class VertragAnlegen extends Component {
         );
     }
 }
-
-
+const styleStatus = {
+    marginTop: '20px',
+    marginRight: '10px',
+    marginBottom: '20px',
+}
+const styleFormular = {
+        marginTop: '5px',
+    }
 /*
 function VertragAnlegen() {
     const [input, setInput] = useState({
