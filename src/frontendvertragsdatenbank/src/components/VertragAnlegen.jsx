@@ -52,36 +52,42 @@ export default class VertragAnlegen extends Component {
         this.setState({
             name: e.target.value
         });
+        console.log("Name eingetragen");
     }
 
     onChangeBedingung(e) {
         this.setState({
             bedingung: e.target.value
         });
+        console.log("bedingung eingetragen");
     }
 
     onChangeKosten(e) {
         this.setState({
             kosten: e.target.value
         });
+        console.log("Kosten eingetragen");
     }
 
     onChangeAnsprechperson(e) {
         this.setState({
             ansprechperson: e.target.value
         });
+        console.log("Ansprechperson eingetragen");
     }
 
     onChangeVertragspartnerName(e) {
         this.setState({
             vertragspartnerName: e.target.value
         });
+        console.log("Vertragspartner Name eingetragen");
     }
 
     onChangeVertragspartnerStrasse(e) {
         this.setState({
             vertragspartnerStrasse: e.target.value
         });
+        console.log("Vertragspartner Straße eingetragen");
     }
 
     onChangeVertragspartnerHausnummer(e) {

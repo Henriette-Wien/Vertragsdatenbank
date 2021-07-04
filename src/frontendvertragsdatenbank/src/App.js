@@ -6,6 +6,7 @@ import AlleVertraege from "./components/AlleVertraege";
 import VertragUebersicht from "./components/VertragUebersicht";
 import VertragAnlegen from "./components/VertragAnlegen";
 import Archiv from "./components/Archiv";
+import BootstrapTable from 'react-bootstrap-table-next';
 
 
 class App extends Component {

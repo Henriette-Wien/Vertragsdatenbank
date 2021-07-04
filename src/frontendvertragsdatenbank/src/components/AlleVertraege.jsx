@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
+import BootstrapTable from 'react-bootstrap-table-next';
 
 export default class AlleVertraege extends Component {
     constructor(props) {
@@ -92,45 +93,73 @@ export default class AlleVertraege extends Component {
     }
 
 
-
     render() {
-        const { vertraege } = this.state;
-        return <div className='container'>
+        const columns = [{
+            dataField: 'name',
+            text: 'Name',
+            sort: true
+        }, {
+            dataField: 'bedingung',
+            text: 'Bedingung',
+            sort: true
+        }, {
+            dataField: 'abschlussdatum',
+            text: 'Abschlussdatum',
+            sort: true
+        }, {
+            dataField: 'status',
+            text: 'Status',
+            sort: true
+        }, {
+            dataField: 'kosten',
+            text: 'Kosten',
+            sort: true
+        }, {
+            dataField: 'laufzeit',
+            text: 'Laufzeit',
+            sort: true
+        }, {
+            dataField: 'ansprechperson',
+            text: 'Ansprechperson',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.name',
+            text: 'Vertragspartner Name',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.anschrift.strasse',
+            text: 'Vertragspartner Straße',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.anschrift.nr',
+            text: 'Vertragspartner Hausnummer',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.anschrift.plz',
+            text: 'Vertragspartner Postleitzahl',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.anschrift.stadt',
+            text: 'Vertragspartner Stadt',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.ansprechpartner.name',
+            text: 'Ansprechpartner Name',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.ansprechpartner.mail',
+            text: 'Ansprechpartner Mail',
+            sort: true
+        }, {
+            dataField: 'vertragspartner.ansprechpartner.tel',
+            text: 'Ansprechpartner Telefon',
+            sort: true
+        }];
+
+      const { vertraege } = this.state;
+      return <div className='container'>
             <h1>Alle Verträge</h1>
-            <div className="list row">
-                <div className="col-md-8">
-                    <div className="input-group mb-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search by Id"
-                            value={this.searchVertragById()}
-                            onChange={this.onChangeSearch}
-                        />
-                        <div className="input-group-append">
-                            <button
-                                className="btn btn-outline-secondary"
-                                type="button"
-                                onClick={this.searchVertragById}
-                            >
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                {vertraege.map(vertrag =>
-                    <div>
-                        <h1>{vertrag.name}</h1>
-                        <p>{vertrag.id}</p>
-                        <p>{vertrag.bedingung}</p>
-                        <p>{vertrag.kosten}</p>
-                        <p>{vertrag.laufzeit}</p>
-                        <p>{vertrag.ansprechperson}</p>
-                        <p>{vertrag.abschlussdatum}</p>
-                        <p>{vertrag.status}</p>
-                    </div>
-                )}
-            </div>
+            <BootstrapTable striped hover keyField='id' data={ vertraege } columns={ columns } />
         </div>
     }
 }
