@@ -31,7 +31,7 @@ export default class VertragAnlegen extends Component {
             bedingung: '',
             kosten: '',
             laufzeit: '',
-            status: '',
+            status: 'aktiv',
             abschlussdatum: '',
             ansprechperson: "",
 
@@ -145,6 +145,22 @@ export default class VertragAnlegen extends Component {
     }
 
     saveVertrag() {
+        var ansprechpartner ={
+            name: this.state.ansprechpartner,
+            mail: this.state.mail,
+            tel: this.state.telefon,
+        }
+        var anschrift = {
+            strasse: this.state.vertragspartnerStrasse,
+            nr: this.state.vertragspartnerHausnummer,
+            plz: this.state.vertragspartnerPostleitzahl,
+            stadt: this.state.vertragspartnerStadt,
+        }
+        var vertragspartner = {
+            name: this.state.vertragspartnerName,
+            anschrift: anschrift,
+            ansprechpartner: ansprechpartner,
+        }
         var data = {
             name: this.state.name,
             bedingung: this.state.bedingung,
@@ -153,6 +169,8 @@ export default class VertragAnlegen extends Component {
             abschlussdatum: this.state.abschlussdatum,
             kosten: this.state.kosten,
             ansprechperson: this.state.ansprechperson,
+            vertragspartner: vertragspartner,
+
         };
 
         VertragService.create(data)
@@ -166,6 +184,7 @@ export default class VertragAnlegen extends Component {
                     abschlussdatum: response.data.abschlussdatum,
                     kosten: response.data.kosten,
                     ansprechperson: response.data.ansprechperson,
+
 
 
                     submitted: true
@@ -422,14 +441,13 @@ export default class VertragAnlegen extends Component {
                         <div className="form-group">
                             <div>
                                 <label style={styleStatus}>Status</label>
-                                <select>
-                                    <option value={this.state.status} onChange={this.onChangeStatus}>Aktiv</option>
+                                <select onChange={this.onChangeStatus}>
+                                    <option value="aktiv" >Aktiv</option>
                                     <option value="inaktiv">Inaktiv</option>
                                     type="textarea"
                                     className="form-control"
                                     id="status"
                                     required
-                                    value={this.state.status}
                                     onChange={this.onChangeStatus}
                                     name="status"
                                     placeholder="Status"

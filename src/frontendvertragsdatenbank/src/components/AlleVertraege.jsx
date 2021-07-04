@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
 import BootstrapTable from 'react-bootstrap-table-next';
+import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+
 
 export default class AlleVertraege extends Component {
     constructor(props) {
@@ -78,6 +81,7 @@ export default class AlleVertraege extends Component {
     }
 
  */
+//            <BootstrapTable striped hover keyField='id' data={ vertraege } columns={ columns } />
 
     searchVertragById() {
         VertragService.getVertragById(this.state.searchVertragById)
@@ -105,7 +109,8 @@ export default class AlleVertraege extends Component {
         }, {
             dataField: 'abschlussdatum',
             text: 'Abschlussdatum',
-            sort: true
+            sort: true,
+            formatter: cell => cell != null ?  new Date(cell).toLocaleDateString() : "Kein Datum"
         }, {
             dataField: 'status',
             text: 'Status',
@@ -157,10 +162,30 @@ export default class AlleVertraege extends Component {
         }];
 
       const { vertraege } = this.state;
+      const { SearchBar } = Search;
       return <div className='container'>
             <h1>Alle Verträge</h1>
-            <input className="form-control" id="myInput" type="text" placeholder="Search.."/>
-            <BootstrapTable striped hover keyField='id' data={ vertraege } columns={ columns } />
+
+
+          <ToolkitProvider
+              keyField="id"
+              data={ vertraege }
+              columns={ columns }
+              search
+          >
+              {
+                  props => (
+                      <div>
+                          <SearchBar { ...props.searchProps } />
+                          <hr />
+                          <BootstrapTable
+                              {
+                                  ...props.baseProps }
+                          />
+                      </div>
+                  )
+              }
+          </ToolkitProvider>
         </div>
     }
 }
