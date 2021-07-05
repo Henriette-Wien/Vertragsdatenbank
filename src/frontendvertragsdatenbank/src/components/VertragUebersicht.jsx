@@ -4,11 +4,13 @@ import React from 'react';
 function VertragUebersicht() {
     return (
         <div className="App">
-            <h1>Übersicht</h1>
+            <h1>Willkommen bei Contract Villain</h1>
             <div>
-                <label>Hier entsteht eine Übersicht mit Anzahl der Verträgen mit den verschiedenen Vertragsarten</label>
+                <label>Ihre zuverlässige Vertragsverwaltung!</label>
             </div>
-            <label>Eventuell auch mit Diagrammen</label>
+            <div>
+                <label>Viel Spaß!</label>
+            </div>
         </div>
     )
 }

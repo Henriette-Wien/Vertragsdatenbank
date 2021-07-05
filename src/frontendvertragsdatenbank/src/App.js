@@ -13,7 +13,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <nav className="navbar navbar-expand navbar-dark bg-dark">
+                <nav className="navbar navbar-expand navbar-dark bg-dark nav-tabs ">
                     <a href="/" className="navbar-brand">
                         Contract Villain
                     </a>

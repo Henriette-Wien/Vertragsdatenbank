@@ -6,7 +6,10 @@ function Archiv() {
         <div className="App">
             <h1>Archiv</h1>
             <div>
-                <label>Hier werden nur Verträge angezeigt, die bereits archiviert wurden</label>
+                <label>Hier folgt die Anzeige aller archivierten Verträge</label>
+            </div>
+            <div>
+                <label>Wird noch entwickelt</label>
             </div>
         </div>
     )

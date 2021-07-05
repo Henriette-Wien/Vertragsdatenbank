@@ -181,6 +181,11 @@ export default class AlleVertraege extends Component {
                           <BootstrapTable
                               {
                                   ...props.baseProps }
+                              bootstrap4
+                              wrapperClasses="table-responsive"
+                              rowClasses="text-nowrap"
+                              hover
+                              striped
                           />
                       </div>
                   )
