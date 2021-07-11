@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
+import ToolkitProvider, {Search} from "react-bootstrap-table2-toolkit";
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
-import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 
 
 export default class AlleVertraege extends Component {
@@ -17,10 +17,6 @@ export default class AlleVertraege extends Component {
 
         this.state = {
             vertraege: [],
-            /* currentVertrag: null,
-             currentIndex: -1,
-
-             */
         };
     }
 

@@ -6,7 +6,6 @@ import AlleVertraege from "./components/AlleVertraege";
 import VertragUebersicht from "./components/VertragUebersicht";
 import VertragAnlegen from "./components/VertragAnlegen";
 import Archiv from "./components/Archiv";
-import BootstrapTable from 'react-bootstrap-table-next';
 
 
 class App extends Component {
@@ -20,7 +19,7 @@ class App extends Component {
                     <div className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <Link to={"/vertrag"} className="nav-link">
-                                AlleVertrage
+                                Alle Verträge
                             </Link>
                         </li>
                         <li className="nav-item">
