@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
-import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
 
 
 export default class AlleVertraege extends Component {
@@ -11,16 +11,10 @@ export default class AlleVertraege extends Component {
         this.onChangeSearch = this.onChangeSearch.bind(this);
         this.retrieveVertraege = this.retrieveVertraege.bind(this);
         this.refreshList = this.refreshList.bind(this);
-        //this.setActiveTutorial = this.setActiveTutorial.bind(this);
-        //this.removeAllTutorials = this.removeAllTutorials.bind(this);
         this.searchVertragById = this.searchVertragById.bind(this);
 
         this.state = {
             vertraege: [],
-            /* currentVertrag: null,
-             currentIndex: -1,
-
-             */
         };
     }
 
@@ -59,30 +53,6 @@ export default class AlleVertraege extends Component {
 
          */
     }
-/*
-    setActiveTutorial(tutorial, index) {
-        this.setState({
-            currentTutorial: tutorial,
-            currentIndex: index
-        });
-    }
-
- */
-/*
-    removeAllTutorials() {
-        TutorialDataService.deleteAll()
-            .then(response => {
-                console.log(response.data);
-                this.refreshList();
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    }
-
- */
-//            <BootstrapTable striped hover keyField='id' data={ vertraege } columns={ columns } />
-
     searchVertragById() {
         VertragService.getVertragById(this.state.searchVertragById)
             .then(response => {
