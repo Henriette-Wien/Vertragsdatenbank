@@ -8,6 +8,7 @@ export default class VertragAnlegen extends Component {
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeKosten = this.onChangeKosten.bind(this);
         this.onChangeLaufzeit = this.onChangeLaufzeit.bind(this);
+        this.onChangeVertragsart = this.onChangeVertragsart.bind(this);
         this.onChangeBedingung = this.onChangeBedingung.bind(this);
         this.onChangeAbschlussdatum = this.onChangeAbschlussdatum.bind(this);
         this.onChangeStatus = this.onChangeStatus.bind(this);
@@ -31,6 +32,7 @@ export default class VertragAnlegen extends Component {
             bedingung: '',
             kosten: '',
             laufzeit: '',
+            vertragsart: '',
             status: 'aktiv',
             abschlussdatum: '',
             ansprechperson: "",
@@ -63,11 +65,19 @@ export default class VertragAnlegen extends Component {
         });
         console.log("Abschlussdatum eingetragen");
     }
+
     onChangeLaufzeit(e) {
         this.setState({
             laufzeit: e.target.value
         });
         console.log("Laufzeit eingetragen");
+    }
+
+    onChangeVertragsart(e) {
+        this.setState({
+            vertragsart: e.target.value
+        });
+        console.log("Vertragsart eingetragen");
     }
 
     onChangeKosten(e) {
@@ -160,6 +170,7 @@ export default class VertragAnlegen extends Component {
             kosten: this.state.kosten,
             ansprechperson: this.state.ansprechperson,
             vertragspartner: vertragspartner,
+            vertragsart: this.state.vertragsart
 
         };
 
@@ -170,11 +181,11 @@ export default class VertragAnlegen extends Component {
                     name: response.data.name,
                     bedingung: response.data.bedingung,
                     laufzeit: response.data.laufzeit,
+                    vertragsart: response.data.vertragsart,
                     status: response.data.status,
                     abschlussdatum: response.data.abschlussdatum,
                     kosten: response.data.kosten,
                     ansprechperson: response.data.ansprechperson,
-
 
 
                     submitted: true
@@ -201,6 +212,7 @@ export default class VertragAnlegen extends Component {
             ansprechpartner: "",
             email: "",
             telefon: "",
+            vertragsart: "",
             submitted: false
         });
     }
@@ -233,7 +245,7 @@ export default class VertragAnlegen extends Component {
             <div className="submit-form">
                 {this.state.submitted ? (
                     <div>
-                        <h4>Vertrag erfolreich eingetragen!</h4>
+                        <h4>Vertrag erfolgreich eingetragen!</h4>
                         <button className="btn btn-success" onClick={this.newAnschrift}>
                             Neuen Vertrag anlegen
                         </button>
@@ -242,7 +254,6 @@ export default class VertragAnlegen extends Component {
                     <div>
                         <h1>Vertrag anlegen</h1>
                         <div className="form-group">
-                            <label htmlFor="title"></label>
                             <input
                                 style={styleFormular}
                                 type="text"
@@ -259,7 +270,6 @@ export default class VertragAnlegen extends Component {
                         <div className="form-group">
                             <textarea
                                 style={styleFormular}
-                                type="textarea"
                                 className="form-control"
                                 id="bedingung"
                                 required
@@ -283,6 +293,7 @@ export default class VertragAnlegen extends Component {
                             </input>
                         </div>
                         <div className="form-group">
+
                             <input
                                 style={styleFormular}
                                 type="textarea"
@@ -290,7 +301,6 @@ export default class VertragAnlegen extends Component {
                                 id="kosten"
                                 required
                                 defaultValue={1000}
-                                decimalsLimit={2}
                                 value={this.state.kosten}
                                 onChange={this.onChangeKosten}
                                 name="kosten"
@@ -310,8 +320,6 @@ export default class VertragAnlegen extends Component {
                                 placeholder="Laufzeit"
                             />
                         </div>
-
-
                         <div className="form-group">
                             <input
                                 style={styleFormular}
@@ -325,7 +333,6 @@ export default class VertragAnlegen extends Component {
                                 placeholder="Ansprechperson eintragen"
                             />
                         </div>
-
                         <div className="form-group">
                             <input
                                 style={styleFormular}
@@ -434,7 +441,7 @@ export default class VertragAnlegen extends Component {
                             <div>
                                 <label style={styleStatus}>Status</label>
                                 <select onChange={this.onChangeStatus}>
-                                    <option value="aktiv" >Aktiv</option>
+                                    <option value="aktiv">Aktiv</option>
                                     <option value="inaktiv">Inaktiv</option>
                                     type="textarea"
                                     className="form-control"
@@ -445,6 +452,22 @@ export default class VertragAnlegen extends Component {
                                     placeholder="Status"
                                 </select>
                             </div>
+                        </div>
+                        <div className="form-group">
+                            <label style={styleStatus}>Vertragsart </label>
+                            <select onChange={this.onChangeVertragsart}>
+                                <option value="Lizenzvertrag">Lizenzvertrag</option>
+                                <option value="Arbeitsvertrag">Arbeitsvertrag</option>
+                                <option value="Kaufvertrag">Kaufvertrag</option>
+                                <option value="Sonstiges">Sonstiges</option>
+                                type="textarea"
+                                className="form-control"
+                                id="vertragsart"
+                                required
+                                onChange={this.onChangeVertragsart}
+                                name="vertragsart"
+                                placeholder="Vertragsart"
+                            </select>
                         </div>
                         <button onClick={this.saveVertrag} className="btn btn-success">
                             Vertrag speichern
@@ -462,5 +485,5 @@ const styleStatus = {
 }
 const styleFormular = {
         marginTop: '5px',
-    }
+}
 

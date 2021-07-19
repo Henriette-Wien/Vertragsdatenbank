@@ -3,7 +3,7 @@ import VertragService from "../services/vertrag.service";
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
-
+import cellEditFactory from 'react-bootstrap-table2-editor';
 
 export default class AlleVertraege extends Component {
     constructor(props) {
@@ -57,7 +57,7 @@ export default class AlleVertraege extends Component {
         VertragService.getVertragById(this.state.searchVertragById)
             .then(response => {
                 this.setState({
-                    tutorials: response.data
+                    vertrag: response.data
                 });
                 console.log(response.data);
             })
@@ -84,7 +84,7 @@ export default class AlleVertraege extends Component {
         }, {
             dataField: 'status',
             text: 'Status',
-            sort: true
+            sort: true,
         }, {
             dataField: 'kosten',
             text: 'Kosten',
@@ -131,32 +131,41 @@ export default class AlleVertraege extends Component {
             sort: true
         }];
 
-      const { vertraege } = this.state;
-      const { SearchBar } = Search;
-      return <div className='container'>
+        const {vertraege} = this.state;
+        const {SearchBar} = Search;
+        const selectOptions = {
+            0: 'aktiv',
+            1: 'inaktiv'
+        };
+        return <div className='container'>
             <h1>Alle Verträge</h1>
 
 
-          <ToolkitProvider
-              keyField="id"
-              data={ vertraege }
-              columns={ columns }
-              search
-          >
-              {
-                  props => (
-                      <div>
-                          <SearchBar { ...props.searchProps } />
-                          <hr />
-                          <BootstrapTable
-                              {
-                                  ...props.baseProps }
-                              bootstrap4
-                              wrapperClasses="table-responsive"
-                              rowClasses="text-nowrap"
-                              hover
-                              striped
-                          />
+            <ToolkitProvider
+                keyField="id"
+                data={vertraege}
+                columns={columns}
+                search
+            >
+                {
+                    props => (
+                        <div>
+                            <SearchBar {...props.searchProps} />
+                            <hr/>
+                            <BootstrapTable
+
+                                {
+                                    ...props.baseProps}
+                                bootstrap4
+                                wrapperClasses="table-responsive"
+                                rowClasses="text-nowrap"
+                                hover
+                                striped
+                                cellEdit={cellEditFactory({
+                                    mode: 'click',
+                                    blurToSave: true
+                                })}
+                            />
                       </div>
                   )
               }

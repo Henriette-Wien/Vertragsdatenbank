@@ -22,8 +22,7 @@ public class Vertrag {
     private String name;
     private String status;
     private Vertragspartner vertragspartner;
-
-
+    private String vertragsart;
 
 
 
@@ -104,6 +103,14 @@ public class Vertrag {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getVertragsart() {
+        return vertragsart;
+    }
+
+    public void setVertragsart(String vertragsart) {
+        this.vertragsart = vertragsart;
     }
 
 }

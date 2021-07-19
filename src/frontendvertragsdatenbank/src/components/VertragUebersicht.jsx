@@ -11,6 +11,12 @@ function VertragUebersicht() {
             <div>
                 <label>Viel Spaß!</label>
             </div>
+
+            <footer
+                style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
+                &copy; {new Date().getFullYear()} Copyright:{' '}
+                Software Engineering Projekt von Anna-Maria Vater, Henriette Wien, Lukas Hatzenbühler und Raffael Maier
+            </footer>
         </div>
     )
 }
