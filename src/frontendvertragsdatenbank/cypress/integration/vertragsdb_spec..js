@@ -9,6 +9,7 @@ describe('Test Homepage', () => {
 
         cy.request('GET', '/vertrag', {})
         cy.visit('/')
+        cy.visit('/archiv')
     });
 
 })

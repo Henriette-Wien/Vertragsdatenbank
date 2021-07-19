@@ -21,9 +21,8 @@ public class Vertrag {
     private String laufzeit;
     private String name;
     private String status;
-    private Vertragspartner vertragspartner;
     private String vertragsart;
-
+    private Vertragspartner vertragspartner;
 
 
     /**

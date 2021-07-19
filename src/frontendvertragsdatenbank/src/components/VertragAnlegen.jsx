@@ -145,23 +145,23 @@ export default class VertragAnlegen extends Component {
     }
 
     saveVertrag() {
-        var ansprechpartner ={
+        const ansprechpartner = {
             name: this.state.ansprechpartner,
             mail: this.state.mail,
             tel: this.state.telefon,
-        }
-        var anschrift = {
+        };
+        const anschrift = {
             strasse: this.state.vertragspartnerStrasse,
             nr: this.state.vertragspartnerHausnummer,
             plz: this.state.vertragspartnerPostleitzahl,
             stadt: this.state.vertragspartnerStadt,
-        }
-        var vertragspartner = {
+        };
+        const vertragspartner = {
             name: this.state.vertragspartnerName,
             anschrift: anschrift,
             ansprechpartner: ansprechpartner,
-        }
-        var data = {
+        };
+        const data = {
             name: this.state.name,
             bedingung: this.state.bedingung,
             laufzeit: this.state.laufzeit,
@@ -169,9 +169,8 @@ export default class VertragAnlegen extends Component {
             abschlussdatum: this.state.abschlussdatum,
             kosten: this.state.kosten,
             ansprechperson: this.state.ansprechperson,
-            vertragspartner: vertragspartner,
-            vertragsart: this.state.vertragsart
-
+            vertragsart: this.state.vertragsart,
+            vertragspartner: vertragspartner
         };
 
         VertragService.create(data)
@@ -186,8 +185,6 @@ export default class VertragAnlegen extends Component {
                     abschlussdatum: response.data.abschlussdatum,
                     kosten: response.data.kosten,
                     ansprechperson: response.data.ansprechperson,
-
-
                     submitted: true
                 });
                 console.log(response.data);
@@ -212,7 +209,8 @@ export default class VertragAnlegen extends Component {
             ansprechpartner: "",
             email: "",
             telefon: "",
-            vertragsart: "",
+            vertragsart: "Lizenzvertrag",
+            status: "aktiv",
             submitted: false
         });
     }
@@ -454,7 +452,7 @@ export default class VertragAnlegen extends Component {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label style={styleStatus}>Vertragsart </label>
+                            <label style={styleStatus}>Vertragsart</label>
                             <select onChange={this.onChangeVertragsart}>
                                 <option value="Lizenzvertrag">Lizenzvertrag</option>
                                 <option value="Arbeitsvertrag">Arbeitsvertrag</option>

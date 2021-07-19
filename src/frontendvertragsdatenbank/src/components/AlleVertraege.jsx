@@ -3,7 +3,7 @@ import VertragService from "../services/vertrag.service";
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
-import cellEditFactory from 'react-bootstrap-table2-editor';
+
 
 export default class AlleVertraege extends Component {
     constructor(props) {
@@ -46,12 +46,6 @@ export default class AlleVertraege extends Component {
 
     refreshList() {
         this.retrieveVertraege();
-        /* this.setState({
-            currentVertrag: null,
-            currentIndex: -1
-        });
-
-         */
     }
     searchVertragById() {
         VertragService.getVertragById(this.state.searchVertragById)
@@ -69,6 +63,10 @@ export default class AlleVertraege extends Component {
 
     render() {
         const columns = [{
+            dataField: 'id',
+            text: 'ID',
+            sort: true
+        }, {
             dataField: 'name',
             text: 'Name',
             sort: true
@@ -153,7 +151,6 @@ export default class AlleVertraege extends Component {
                             <SearchBar {...props.searchProps} />
                             <hr/>
                             <BootstrapTable
-
                                 {
                                     ...props.baseProps}
                                 bootstrap4
@@ -161,10 +158,6 @@ export default class AlleVertraege extends Component {
                                 rowClasses="text-nowrap"
                                 hover
                                 striped
-                                cellEdit={cellEditFactory({
-                                    mode: 'click',
-                                    blurToSave: true
-                                })}
                             />
                       </div>
                   )
