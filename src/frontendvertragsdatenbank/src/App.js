@@ -19,7 +19,7 @@ class App extends Component {
                     <div className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <Link to={"/vertrag"} className="nav-link">
-                                AlleVertrage
+                                Alle Verträge
                             </Link>
                         </li>
                         <li className="nav-item">

@@ -16,6 +16,7 @@ html{
 
 .navbar{
     width: 100%;
+    display: flex;
 }
 .App-logo {
     height: 40vmin;
