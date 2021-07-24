@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
-
+import {MDBTable, MDBTableBody, MDBTableHead} from 'mdbreact';
+import {Link} from "react-router-dom";
 
 export default class VertragUebersicht extends Component {
 
@@ -24,9 +25,6 @@ export default class VertragUebersicht extends Component {
                 });
                 console.log(response.data.length);
             })
-            .then(response => {
-
-            })
             .catch(e => {
                 console.log(e);
             });
@@ -34,7 +32,13 @@ export default class VertragUebersicht extends Component {
 
     render() {
         const {vertraege} = this.state;
-        const aktiveVertrage = this.state.vertraege.filter(vertraege => vertraege.status = "aktiv").length;
+        var newArray = vertraege.filter(function (el) {
+            return el.status === "aktiv";
+        });
+        var Vertragsart = vertraege.filter(function (el) {
+            return el.vertragsart === "Lizenzvertrag";
+        });
+
         return (
 
             <div className="App">
@@ -46,12 +50,30 @@ export default class VertragUebersicht extends Component {
                     <label>Viel Spaß!</label>
                 </div>
 
-                <div>
-                    <label>{this.state.vertraege.length} Einträge in der Datenbank vorhanden
-                    </label>
 
-                </div>
-
+                <MDBTable responsive className='table-light' hover>
+                    <MDBTableHead>
+                        <tr>
+                            <th>Gesamt Einträge in der Datenbank vorhanden</th>
+                            <th>Aktive Verträge</th>
+                            <th>Inaktive Verträge</th>
+                            <th>Lizenzverträge</th>
+                        </tr>
+                    </MDBTableHead>
+                    <MDBTableBody>
+                        <tr>
+                            <td>{this.state.vertraege.length}</td>
+                            <td>{newArray.length}</td>
+                            <td>{this.state.vertraege.length - newArray.length}</td>
+                            <td>{Vertragsart.length}</td>
+                        </tr>
+                    </MDBTableBody>
+                </MDBTable>
+                <Link to="/vertrag">
+                    <button className="btn btn-light">
+                        Verträge anzeigen
+                    </button>
+                </Link>
                 <footer
                     style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
                     &copy; {new Date().getFullYear()} Copyright:{' '}
@@ -59,6 +81,7 @@ export default class VertragUebersicht extends Component {
                     Maier
                 </footer>
             </div>
+
         )
     }
 }

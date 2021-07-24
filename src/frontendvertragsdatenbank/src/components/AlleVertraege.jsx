@@ -138,7 +138,6 @@ export default class AlleVertraege extends Component {
         return <div className='container'>
             <h1>Alle Verträge</h1>
 
-
             <ToolkitProvider
                 keyField="id"
                 data={vertraege}
@@ -150,6 +149,9 @@ export default class AlleVertraege extends Component {
                         <div>
                             <SearchBar {...props.searchProps} />
                             <hr/>
+                            <label><span className="badge">{this.state.vertraege.length}</span>Einträge in der Datenbank
+                                vorhanden
+                            </label>
                             <BootstrapTable
                                 {
                                     ...props.baseProps}
@@ -159,7 +161,7 @@ export default class AlleVertraege extends Component {
                                 hover
                                 striped
                             />
-                      </div>
+                        </div>
                   )
               }
           </ToolkitProvider>
