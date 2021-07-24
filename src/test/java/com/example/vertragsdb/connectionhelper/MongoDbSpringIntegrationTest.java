@@ -1,7 +1,9 @@
 package com.example.vertragsdb.connectionhelper;
 
+import com.example.vertragsdb.controller.VertragController;
 import com.example.vertragsdb.model.Vertrag;
 import com.example.vertragsdb.repository.VertragRepository;
+import com.example.vertragsdb.service.VertragService;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoClients;
@@ -18,19 +20,31 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
+@RunWith(SpringRunner.class)
+@WebMvcTest(VertragController.class)
 public class MongoDbSpringIntegrationTest {
-
+    @Autowired
+    private MockMvc mvc;
     @Autowired
     VertragRepository vertragRepository;
+    @MockBean
+    private VertragService service;
+
+
     private static final String CONNECTION_STRING = "mongodb+srv://sp5pl:sp5@vertragsdatenbank.ihvcb.mongodb.net/Vertragsdatenbank?retryWrites=true&w=majority";
     private MongodExecutable mongodExecutable;
     private MongoTemplate mongoTemplate;
@@ -84,5 +98,6 @@ public class MongoDbSpringIntegrationTest {
     public void shouldBeNotEmpty() {
         assertThat(vertragRepository.findAll()).isNotEmpty();
     }
+
 
 }
