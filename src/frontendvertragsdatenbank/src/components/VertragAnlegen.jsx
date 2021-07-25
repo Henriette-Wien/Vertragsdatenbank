@@ -28,14 +28,6 @@ export default class VertragAnlegen extends Component {
         this.newAnsprechpartner = this.newAnsprechpartner.bind(this);
 
         this.state = {
-            name: '',
-            bedingung: '',
-            kosten: '',
-            laufzeit: '',
-            vertragsart: 'Sonstiges',
-            status: 'aktiv',
-            abschlussdatum: '',
-            ansprechperson: "",
             submitted: false
         };
     }
@@ -282,6 +274,7 @@ export default class VertragAnlegen extends Component {
                                 style={styleFormular}
                                 type="date"
                                 className="form-control"
+                                defaultValue={Date.now()}
                                 id="abschlussdatum"
                                 required
                                 value={this.state.abschlussdatum}
@@ -298,7 +291,6 @@ export default class VertragAnlegen extends Component {
                                 className="form-control"
                                 id="kosten"
                                 required
-
                                 value={this.state.kosten}
                                 onChange={this.onChangeKosten}
                                 name="kosten"
@@ -445,7 +437,6 @@ export default class VertragAnlegen extends Component {
                                     className="form-control"
                                     id="status"
                                     required
-
                                     name="status"
                                     placeholder="Status"
                                 </select>

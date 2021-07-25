@@ -8,8 +8,19 @@ describe('Test Homepage', () => {
     it('should visit homepage ', () => {
 
         cy.request('GET', '/vertrag', {})
+        cy.visit('/add')
+        cy.request('POST', '/vertrag', {
+            name: 'First Post',
+            beschreibung: 'test',
+            status: 'inaktiv',
+        })
+        cy.request('POST', '/vertrag', {
+            name: 'First Post',
+            beschreibung: 'test',
+            status: 'inaktiv',
+        })
+        cy.get('button').click()
         cy.visit('/')
-        cy.visit('/archiv')
     });
 
 })
