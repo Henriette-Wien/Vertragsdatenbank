@@ -1,9 +1,5 @@
 package com.example.vertragsdb.connectionhelper;
 
-import com.example.vertragsdb.controller.VertragController;
-import com.example.vertragsdb.model.Vertrag;
-import com.example.vertragsdb.repository.VertragRepository;
-import com.example.vertragsdb.service.VertragService;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
 import com.mongodb.client.MongoClients;
@@ -14,48 +10,35 @@ import de.flapdoodle.embed.mongo.config.MongodConfig;
 import de.flapdoodle.embed.mongo.config.Net;
 import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
+import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
 @RunWith(SpringRunner.class)
-@WebMvcTest(VertragController.class)
 public class MongoDbSpringIntegrationTest {
-    @Autowired
-    private MockMvc mvc;
-    @Autowired
-    VertragRepository vertragRepository;
-    @MockBean
-    private VertragService service;
-
 
     private static final String CONNECTION_STRING = "mongodb+srv://sp5pl:sp5@vertragsdatenbank.ihvcb.mongodb.net/Vertragsdatenbank?retryWrites=true&w=majority";
     private MongodExecutable mongodExecutable;
     private MongoTemplate mongoTemplate;
 
-    @AfterEach
-    void clean() {
+    @After
+    public void clean() {
         mongodExecutable.stop();
     }
 
-    @BeforeEach
-    void setup() throws Exception {
+    @Before
+    public void setup() throws Exception {
         String ip = "localhost";
         int port = 27017;
 
@@ -75,7 +58,7 @@ public class MongoDbSpringIntegrationTest {
             + " when save object using MongoDB template"
             + " then object is saved")
     @Test
-    void test() throws Exception {
+    public void test() throws Exception {
         // given
         DBObject objectToSave = BasicDBObjectBuilder.start()
                 .add("key", "value")
@@ -88,16 +71,5 @@ public class MongoDbSpringIntegrationTest {
         assertThat(mongoTemplate.findAll(DBObject.class, "collection")).extracting("key")
                 .containsOnly("value");
     }
-
-    @Before
-    public void setUp() throws Exception {
-        vertragRepository.save(new Vertrag());
-    }
-
-    @Test
-    public void shouldBeNotEmpty() {
-        assertThat(vertragRepository.findAll()).isNotEmpty();
-    }
-
 
 }
