@@ -131,10 +131,7 @@ export default class AlleVertraege extends Component {
 
         const {vertraege} = this.state;
         const {SearchBar} = Search;
-        const selectOptions = {
-            0: 'aktiv',
-            1: 'inaktiv'
-        };
+
         return <div className='container'>
             <h1>Alle Verträge</h1>
 

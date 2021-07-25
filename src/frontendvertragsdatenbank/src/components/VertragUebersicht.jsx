@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import VertragService from "../services/vertrag.service";
 import {MDBTable, MDBTableBody, MDBTableHead} from 'mdbreact';
 import {Link} from "react-router-dom";
+import Chart from "react-google-charts";
+
 
 export default class VertragUebersicht extends Component {
 
@@ -32,13 +34,25 @@ export default class VertragUebersicht extends Component {
 
     render() {
         const {vertraege} = this.state;
-        var newArray = vertraege.filter(function (el) {
+        var aktiveVertraege = vertraege.filter(function (el) {
             return el.status === "aktiv";
         });
-        var Vertragsart = vertraege.filter(function (el) {
+        var Lizenzvertraege = vertraege.filter(function (el) {
             return el.vertragsart === "Lizenzvertrag";
         });
-
+        let anzahlLizenz = Lizenzvertraege.length;
+        var Kaufvertraege = vertraege.filter(function (el) {
+            return el.vertragsart === "Kaufvertrag";
+        });
+        let anzahlKauf = Kaufvertraege.length;
+        var Arbeitsvertraege = vertraege.filter(function (el) {
+            return el.vertragsart === "Arbeitsvertrag";
+        });
+        let anzahlArbeit = Arbeitsvertraege.length;
+        var Sonstiges = vertraege.filter(function (el) {
+            return el.vertragsart === "Sonstiges";
+        });
+        let anzahlSonstiges = Sonstiges.length;
         return (
 
             <div className="App">
@@ -49,37 +63,57 @@ export default class VertragUebersicht extends Component {
                 <div>
                     <label>Viel Spaß!</label>
                 </div>
-
-
-                <MDBTable responsive className='table-light' hover>
-                    <MDBTableHead>
-                        <tr>
-                            <th>Gesamt Einträge in der Datenbank vorhanden</th>
-                            <th>Aktive Verträge</th>
-                            <th>Inaktive Verträge</th>
-                            <th>Lizenzverträge</th>
-                        </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                        <tr>
-                            <td>{this.state.vertraege.length}</td>
-                            <td>{newArray.length}</td>
-                            <td>{this.state.vertraege.length - newArray.length}</td>
-                            <td>{Vertragsart.length}</td>
-                        </tr>
-                    </MDBTableBody>
-                </MDBTable>
+                <p>
+                    <MDBTable responsive className='table-light' hover>
+                        <MDBTableHead>
+                            <tr>
+                                <th>Gesamt Einträge in der Datenbank vorhanden</th>
+                                <th>Aktive Verträge</th>
+                                <th>Inaktive Verträge</th>
+                                <th>Lizenzverträge</th>
+                            </tr>
+                        </MDBTableHead>
+                        <MDBTableBody>
+                            <tr>
+                                <td>{this.state.vertraege.length}</td>
+                                <td>{aktiveVertraege.length}</td>
+                                <td>{this.state.vertraege.length - aktiveVertraege.length}</td>
+                                <td>{anzahlLizenz}</td>
+                            </tr>
+                        </MDBTableBody>
+                    </MDBTable>
+                    <Chart
+                        chartType="PieChart"
+                        loader={<div>Loading Chart</div>}
+                        data={[
+                            ['Verträge', 'Anzahl'],
+                            ['Lizenzverträge', anzahlLizenz],
+                            ['Kaufverträge', anzahlKauf],
+                            ['Arbeitsverträge', anzahlArbeit],
+                            ['Sonstiges', anzahlSonstiges],
+                        ]}
+                        options={{
+                            title: 'Vertragsarten Übersicht',
+                            is3D: true,
+                            responsive: true
+                        }}
+                        rootProps={{'data-testid': '2'}}
+                    />
+                </p>
                 <Link to="/vertrag">
                     <button className="btn btn-light">
                         Verträge anzeigen
                     </button>
                 </Link>
-                <footer
-                    style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
-                    &copy; {new Date().getFullYear()} Copyright:{' '}
-                    Software Engineering Projekt von Anna-Maria Vater, Henriette Wien, Lukas Hatzenbühler und Raffael
-                    Maier
-                </footer>
+                <p>
+                    <footer
+                        style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
+                        &copy; {new Date().getFullYear()} Copyright:{' '}
+                        Software Engineering Projekt von Anna-Maria Vater, Henriette Wien, Lukas Hatzenbühler und
+                        Raffael
+                        Maier
+                    </footer>
+                </p>
             </div>
 
         )
