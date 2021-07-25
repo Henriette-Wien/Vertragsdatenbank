@@ -32,7 +32,7 @@ export default class VertragAnlegen extends Component {
             bedingung: '',
             kosten: '',
             laufzeit: '',
-            vertragsart: '',
+            vertragsart: 'Sonstiges',
             status: 'aktiv',
             abschlussdatum: '',
             ansprechperson: "",
@@ -209,7 +209,7 @@ export default class VertragAnlegen extends Component {
             ansprechpartner: "",
             email: "",
             telefon: "",
-            vertragsart: "Lizenzvertrag",
+            vertragsart: "Sonstiges",
             status: "aktiv",
             submitted: false
         });
@@ -298,7 +298,7 @@ export default class VertragAnlegen extends Component {
                                 className="form-control"
                                 id="kosten"
                                 required
-                                defaultValue={1000}
+
                                 value={this.state.kosten}
                                 onChange={this.onChangeKosten}
                                 name="kosten"
@@ -445,7 +445,7 @@ export default class VertragAnlegen extends Component {
                                     className="form-control"
                                     id="status"
                                     required
-                                    onChange={this.onChangeStatus}
+
                                     name="status"
                                     placeholder="Status"
                                 </select>
@@ -462,7 +462,7 @@ export default class VertragAnlegen extends Component {
                                 className="form-control"
                                 id="vertragsart"
                                 required
-                                onChange={this.onChangeVertragsart}
+
                                 name="vertragsart"
                                 placeholder="Vertragsart"
                             </select>
