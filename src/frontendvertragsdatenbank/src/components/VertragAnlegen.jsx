@@ -27,7 +27,11 @@ export default class VertragAnlegen extends Component {
         this.newAnschrift = this.newAnschrift.bind(this);
         this.newAnsprechpartner = this.newAnsprechpartner.bind(this);
 
+
         this.state = {
+            id: null,
+            vertragsart: "Sonstiges",
+            status: "aktiv",
             submitted: false
         };
         //61019edc5f93a14501e72376
@@ -319,7 +323,7 @@ export default class VertragAnlegen extends Component {
                                 type="text"
                                 className="form-control"
                                 id="name"
-                                required
+                                required={true}
                                 value={this.state.name}
                                 onChange={this.onChangeName}
                                 name="name"
@@ -332,7 +336,7 @@ export default class VertragAnlegen extends Component {
                                 style={styleFormular}
                                 className="form-control"
                                 id="bedingung"
-                                required
+                                required={false}
                                 value={this.state.bedingung}
                                 onChange={this.onChangeBedingung}
                                 name="bedingung"
@@ -344,14 +348,14 @@ export default class VertragAnlegen extends Component {
                                 style={styleFormular}
                                 type="date"
                                 className="form-control"
-                                defaultValue={Date.now()}
                                 id="abschlussdatum"
-                                required
+                                required={true}
                                 value={this.state.abschlussdatum}
                                 onChange={this.onChangeAbschlussdatum}
                                 name="abschlussdatum"
                                 placeholder="Abschlussdatum">
                             </input>
+
                         </div>
                         <div className="form-group">
 
@@ -360,7 +364,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="kosten"
-                                required
+                                required={false}
                                 value={this.state.kosten}
                                 onChange={this.onChangeKosten}
                                 name="kosten"
@@ -373,7 +377,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="laufzeit"
-                                required
+                                required={true}
                                 value={this.state.laufzeit}
                                 onChange={this.onChangeLaufzeit}
                                 name="laufzeit"
@@ -386,7 +390,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechperson"
-                                required
+                                required={false}
                                 value={this.state.ansprechperson}
                                 onChange={this.onChangeAnsprechperson}
                                 name="ansprechperson"
@@ -399,7 +403,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartner.name"
-                                required
+                                required={false}
                                 value={this.state.vertragspartnerName}
                                 onChange={this.onChangeVertragspartnerName}
                                 name="vertragspartnerName"
@@ -412,7 +416,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerStrasse"
-                                required
+                                required={false}
                                 value={this.state.vertragspartnerStrasse}
                                 onChange={this.onChangeVertragspartnerStrasse}
                                 name="vertragspartnerStrasse"
@@ -425,7 +429,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerHausnummer"
-                                required
+                                required={false}
                                 value={this.state.vertragspartnerHausnummer}
                                 onChange={this.onChangeVertragspartnerHausnummer}
                                 name="vertragspartnerHausnummer"
@@ -438,7 +442,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerPostleitzahl"
-                                required
+                                required={false}
                                 value={this.state.vertragspartnerPostleitzahl}
                                 onChange={this.onChangeVertragspartnerPostleitzahl}
                                 name="vertragspartnerPostleitzahl"
@@ -451,7 +455,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerStadt"
-                                required
+                                required={false}
                                 value={this.state.vertragspartnerStadt}
                                 onChange={this.onChangeVertragspartnerStadt}
                                 name="vertragspartnerStadt"
@@ -464,7 +468,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechpartner"
-                                required
+                                required={false}
                                 value={this.state.ansprechpartner}
                                 onChange={this.onChangeAnsprechpartner}
                                 name="ansprechpartner"
@@ -477,7 +481,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechpartner"
-                                required
+                                required={true}
                                 value={this.state.mail}
                                 onChange={this.onChangeMail}
                                 name="mail"
@@ -490,7 +494,7 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="telefon"
-                                required
+                                required={false}
                                 value={this.state.telefon}
                                 onChange={this.onChangeTelefon}
                                 name="telefon"
@@ -498,32 +502,25 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <div>
-                                <label style={styleStatus}>Status</label>
-                                <select onChange={this.onChangeStatus}>
-                                    <option value="aktiv">Aktiv</option>
-                                    <option value="inaktiv">Inaktiv</option>
-                                    type="textarea"
-                                    className="form-control"
-                                    id="status"
-                                    required
-                                    name="status"
-                                    placeholder="Status"
-                                </select>
-                            </div>
+                            <label style={styleStatus}>Status</label>
+                            <select onChange={this.onChangeStatus} id="status" required="false">
+                                <option value="aktiv">Aktiv</option>
+                                <option value="inaktiv">Inaktiv</option>
+                                type="textarea"
+                                className="form-control"
+                                name="status"
+                                placeholder="Status"
+                            </select>
                         </div>
                         <div className="form-group">
                             <label style={styleStatus}>Vertragsart</label>
-                            <select onChange={this.onChangeVertragsart}>
+                            <select onChange={this.onChangeVertragsart} id="vertragsart" required="false">
+                                <option value="Sonstiges">Sonstiges</option>
                                 <option value="Lizenzvertrag">Lizenzvertrag</option>
                                 <option value="Arbeitsvertrag">Arbeitsvertrag</option>
                                 <option value="Kaufvertrag">Kaufvertrag</option>
-                                <option value="Sonstiges">Sonstiges</option>
                                 type="textarea"
                                 className="form-control"
-                                id="vertragsart"
-                                required
-
                                 name="vertragsart"
                                 placeholder="Vertragsart"
                             </select>
