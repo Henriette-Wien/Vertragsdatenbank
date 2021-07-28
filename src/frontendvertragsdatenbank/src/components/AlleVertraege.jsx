@@ -7,7 +7,7 @@ import cellEditFactory from 'react-bootstrap-table2-editor';
 
 
 export default class AlleVertraege extends Component {
-    a4a3;
+    table_element;
     constructor(props) {
         super(props);
         this.onChangeSearch = this.onChangeSearch.bind(this);
@@ -56,11 +56,11 @@ export default class AlleVertraege extends Component {
         return parameterList.get(key)
     }
     deleteVertrag() {
-        VertragService.delete(this.a4a3)
+        VertragService.delete(this.table_element)
         window.location.reload(true)
     }
     editVertrag(){
-        window.location.assign("/add?id=" + this.a4a3)
+        window.location.assign("/add?id=" + this.table_element)
     }
 
     refreshList() {
@@ -157,7 +157,7 @@ export default class AlleVertraege extends Component {
             style: { background: 'grey' },
             clickToSelect: true,
             onSelect: (row, isSelect, rowIndex, e) => {
-                this.a4a3 = row.id;
+                this.table_element = row.id;
                 console.log(row.id);
                 console.log(isSelect);
                 console.log(rowIndex);
@@ -171,23 +171,13 @@ export default class AlleVertraege extends Component {
         };
         const cellEdit = cellEditFactory({
             mode: 'click',
-            // beforeSaveCell(oldValue, newValue, row, column, done) {
-            //     setTimeout(() => {
-            //         if (window.confirm('Do you want to accep this change?')) {
-            //             done(); // contine to save the changes
-            //         } else {
-            //             done(false); // reject the changes
-            //         }
-            //     }, 0);
-            //     return { async: true };
-            // }
         });
 
-        let temp = this.getParameter("id");
+        let temp_id = this.getParameter("id");
 
         return <div className='container'>
             <h1>Alle Verträge</h1>
-            {temp}
+            {temp_id}
             <ToolkitProvider
                 keyField="id"
                 data={vertraege}
@@ -218,8 +208,8 @@ export default class AlleVertraege extends Component {
               }
           </ToolkitProvider>
             <div>
-                <button id="button" className={"btn btn-success"} onClick={()=>this.deleteVertrag()}>Löschen</button>
-                <button id="button" className={"btn btn-success"} onClick={()=>this.editVertrag()}>Bearbeiten</button>
+                <button id="button" className={"btn btn-primary"} onClick={() => this.deleteVertrag()}>Löschen</button>
+                <button id="button" className={"btn btn-success"} onClick={() => this.editVertrag()}>Bearbeiten</button>
             </div>
         </div>
     }
