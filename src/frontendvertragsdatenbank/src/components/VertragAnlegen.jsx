@@ -27,7 +27,11 @@ export default class VertragAnlegen extends Component {
         this.newAnschrift = this.newAnschrift.bind(this);
         this.newAnsprechpartner = this.newAnsprechpartner.bind(this);
 
+
         this.state = {
+            id: null,
+            vertragsart: "Sonstiges",
+            status: "aktiv",
             submitted: false
         };
     }
@@ -428,31 +432,25 @@ export default class VertragAnlegen extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <div>
-                                <label style={styleStatus}>Status</label>
-                                <select onChange={this.onChangeStatus}>
-                                    <option value="aktiv">Aktiv</option>
-                                    <option value="inaktiv">Inaktiv</option>
-                                    type="textarea"
-                                    className="form-control"
-                                    id="status"
-                                    required="true"
-                                    name="status"
-                                    placeholder="Status"
-                                </select>
-                            </div>
+                            <label style={styleStatus}>Status</label>
+                            <select onChange={this.onChangeStatus} id="status" required="false">
+                                <option value="aktiv">Aktiv</option>
+                                <option value="inaktiv">Inaktiv</option>
+                                type="textarea"
+                                className="form-control"
+                                name="status"
+                                placeholder="Status"
+                            </select>
                         </div>
                         <div className="form-group">
                             <label style={styleStatus}>Vertragsart</label>
-                            <select onChange={this.onChangeVertragsart}>
+                            <select onChange={this.onChangeVertragsart} id="vertragsart" required="false">
+                                <option value="Sonstiges">Sonstiges</option>
                                 <option value="Lizenzvertrag">Lizenzvertrag</option>
                                 <option value="Arbeitsvertrag">Arbeitsvertrag</option>
                                 <option value="Kaufvertrag">Kaufvertrag</option>
-                                <option value="Sonstiges">Sonstiges</option>
                                 type="textarea"
                                 className="form-control"
-                                id="vertragsart"
-                                required="false"
                                 name="vertragsart"
                                 placeholder="Vertragsart"
                             </select>
