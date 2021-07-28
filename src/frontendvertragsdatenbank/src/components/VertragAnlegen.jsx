@@ -278,7 +278,6 @@ export default class VertragAnlegen extends Component {
                                 style={styleFormular}
                                 type="date"
                                 className="form-control"
-                                defaultValue={Date.now()}
                                 id="abschlussdatum"
                                 required={true}
                                 value={this.state.abschlussdatum}
@@ -286,6 +285,7 @@ export default class VertragAnlegen extends Component {
                                 name="abschlussdatum"
                                 placeholder="Abschlussdatum">
                             </input>
+
                         </div>
                         <div className="form-group">
 
