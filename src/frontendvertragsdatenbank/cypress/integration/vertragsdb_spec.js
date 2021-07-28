@@ -3,7 +3,7 @@
 // If you're unfamiliar with how Cypress works,
 // check out the link below and learn how to write your first test:
 // https://on.cypress.io/writing-first-test
-describe('Test Vertragsdatenbank', () => {
+describe('End-2-End-Test Vertragsdatenbank', () => {
 
     it('should visit homepage ', () => {
         cy.visit('/')
@@ -27,14 +27,7 @@ describe('Test Vertragsdatenbank', () => {
         cy.get('select[id=status').select('aktiv').should('have.value', 'aktiv')
         cy.get('select[id=vertragsart').select('Kaufvertrag').should('have.value', 'Kaufvertrag')
         cy.get('button').click();
-        cy.contains('Vertrag erfolgreich eingetragen')
-        /*cy.request('POST', '/vertrag', {
-            name: 'Vertrag 12',
-            beschreibung: 'test',
-            status: 'aktiv',
-            laufzeit: '10 Monate'
-        })
-       */
+        cy.contains('Vertrag erfolgreich eingetragen');
     })
     it('should visit homepage ', () => {
         cy.visit('/')
