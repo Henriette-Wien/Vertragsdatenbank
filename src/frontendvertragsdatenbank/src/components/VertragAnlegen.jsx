@@ -30,6 +30,50 @@ export default class VertragAnlegen extends Component {
         this.state = {
             submitted: false
         };
+        //61019edc5f93a14501e72376
+        let id = this.getParameter("id")
+        console.log(id)
+        if (id!=null){
+        VertragService.getVertragById(id)
+            .then(response => {
+                this.setState({
+                    id: response.data.id,
+                    name: response.data.name,
+                    bedingung: response.data.bedingung,
+                    laufzeit: response.data.laufzeit,
+                    vertragsart: response.data.vertragsart,
+                    status: response.data.status,
+                    abschlussdatum: response.data.abschlussdatum,
+                    kosten: response.data.kosten,
+                    ansprechperson: response.data.ansprechperson,
+                    vertragspartnerName: response.data.vertragspartner.name,
+                    vertragspartnerStrasse: response.data.vertragspartner.anschrift.strasse,
+                    vertragspartnerHausnummer: response.data.vertragspartner.anschrift.nr,
+                    vertragspartnerPostleitzahl: response.data.vertragspartner.anschrift.plz,
+                    vertragspartnerStadt: response.data.vertragspartner.anschrift.stadt,
+                    ansprechpartner: response.data.vertragspartner.ansprechpartner.name,
+                    mail: response.data.vertragspartner.ansprechpartner.mail,
+                    telefon: response.data.vertragspartner.ansprechpartner.tel,
+                    submitted: false
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+
+        }}
+    getParameter = (key) => {
+
+        // Address of the current window
+        let address = window.location.search
+
+        // Returns a URLSearchParams object instance
+        let parameterList = new URLSearchParams(address)
+
+        // Returning the respected value associated
+        // with the provided key
+        return parameterList.get(key)
     }
 
     onChangeName(e) {
@@ -165,6 +209,9 @@ export default class VertragAnlegen extends Component {
             vertragspartner: vertragspartner
         };
 
+        let id = this.getParameter("id")
+
+        if (id==null){
         VertragService.create(data)
             .then(response => {
                 this.setState({
@@ -185,6 +232,29 @@ export default class VertragAnlegen extends Component {
                 console.log(e);
             });
     }
+    else {
+            VertragService.update(id, data)
+                .then(response => {
+                    this.setState({
+                        id: response.data.id,
+                        name: response.data.name,
+                        bedingung: response.data.bedingung,
+                        laufzeit: response.data.laufzeit,
+                        vertragsart: response.data.vertragsart,
+                        status: response.data.status,
+                        abschlussdatum: response.data.abschlussdatum,
+                        kosten: response.data.kosten,
+                        ansprechperson: response.data.ansprechperson,
+                        submitted: true
+                    });
+                    console.log(response.data);
+                })
+                .catch(e => {
+                    console.log(e);
+                });
+        }
+        }
+
 
     newVertrag() {
         this.setState({

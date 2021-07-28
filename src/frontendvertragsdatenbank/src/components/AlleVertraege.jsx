@@ -3,16 +3,17 @@ import VertragService from "../services/vertrag.service";
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
+import cellEditFactory from 'react-bootstrap-table2-editor';
 
 
 export default class AlleVertraege extends Component {
+    a4a3;
     constructor(props) {
         super(props);
         this.onChangeSearch = this.onChangeSearch.bind(this);
         this.retrieveVertraege = this.retrieveVertraege.bind(this);
         this.refreshList = this.refreshList.bind(this);
         this.searchVertragById = this.searchVertragById.bind(this);
-
         this.state = {
             vertraege: [],
         };
@@ -30,7 +31,6 @@ export default class AlleVertraege extends Component {
         });
     }
 
-
     retrieveVertraege() {
         VertragService.getAllVertraege()
             .then(response => {
@@ -42,6 +42,25 @@ export default class AlleVertraege extends Component {
             .catch(e => {
                 console.log(e);
             });
+    }
+    getParameter = (key) => {
+
+        // Address of the current window
+        let address = window.location.search
+
+        // Returns a URLSearchParams object instance
+        let parameterList = new URLSearchParams(address)
+
+        // Returning the respected value associated
+        // with the provided key
+        return parameterList.get(key)
+    }
+    deleteVertrag() {
+        VertragService.delete(this.a4a3)
+        window.location.reload(true)
+    }
+    editVertrag(){
+        window.location.assign("/add?id=" + this.a4a3)
     }
 
     refreshList() {
@@ -60,16 +79,18 @@ export default class AlleVertraege extends Component {
             });
     }
 
-
     render() {
-        const columns = [{
+        const columns = [
+            {
             dataField: 'id',
             text: 'ID',
             sort: true
         }, {
             dataField: 'name',
             text: 'Name',
-            sort: true
+            sort: true,
+            editable: true,
+
         }, {
             dataField: 'bedingung',
             text: 'Bedingung',
@@ -131,10 +152,42 @@ export default class AlleVertraege extends Component {
 
         const {vertraege} = this.state;
         const {SearchBar} = Search;
+        const selectRow = {
+            mode: 'radio',
+            style: { background: 'grey' },
+            clickToSelect: true,
+            onSelect: (row, isSelect, rowIndex, e) => {
+                this.a4a3 = row.id;
+                console.log(row.id);
+                console.log(isSelect);
+                console.log(rowIndex);
+                console.log(e);
+            },
+            onSelectAll: (isSelect, rows, e) => {
+                console.log(isSelect);
+                console.log(rows);
+                console.log(e);
+            }
+        };
+        const cellEdit = cellEditFactory({
+            mode: 'click',
+            // beforeSaveCell(oldValue, newValue, row, column, done) {
+            //     setTimeout(() => {
+            //         if (window.confirm('Do you want to accep this change?')) {
+            //             done(); // contine to save the changes
+            //         } else {
+            //             done(false); // reject the changes
+            //         }
+            //     }, 0);
+            //     return { async: true };
+            // }
+        });
+
+        let temp = this.getParameter("id");
 
         return <div className='container'>
             <h1>Alle Verträge</h1>
-
+            {temp}
             <ToolkitProvider
                 keyField="id"
                 data={vertraege}
@@ -157,11 +210,17 @@ export default class AlleVertraege extends Component {
                                 rowClasses="text-nowrap"
                                 hover
                                 striped
+                                selectRow={ selectRow }
+                                cellEdit={ cellEdit }
                             />
                         </div>
                   )
               }
           </ToolkitProvider>
+            <div>
+                <button id="button" className={"btn btn-success"} onClick={()=>this.deleteVertrag()}>Löschen</button>
+                <button id="button" className={"btn btn-success"} onClick={()=>this.editVertrag()}>Bearbeiten</button>
+            </div>
         </div>
     }
 }
