@@ -15,6 +15,7 @@ jobs:
         with:
           working-directory: ./src/frontendvertragsdatenbank
           build: npm run build --if-present
+                 serve -s build -l 3000
           start: npm start
           wait-on: http://localhost:3000
           wait-on-timeout: 120
