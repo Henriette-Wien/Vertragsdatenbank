@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import VertragService from "../services/vertrag.service";
+import {Link} from "react-router-dom";
 
 export default class VertragAnlegen extends Component {
     constructor(props) {
@@ -313,10 +314,20 @@ export default class VertragAnlegen extends Component {
                         <button className="btn btn-success" onClick={this.newVertrag}>
                             Neuen Vertrag anlegen
                         </button>
+                        <Link to="/">
+                            <button id="Startseite" className="btn btn-light">
+                                Zur Startseite
+                            </button>
+                        </Link>
+                        <Link to="/vertrag">
+                            <button className="btn btn-light">
+                                Verträge anzeigen
+                            </button>
+                        </Link>
                     </div>
                 ) : (
                     <div>
-                        <h1>Vertrag anlegen</h1>
+                        <h1>Vertrag anlegen und bearbeiten</h1>
                         <div className="form-group">
                             <input
                                 style={styleFormular}

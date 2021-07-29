@@ -223,7 +223,7 @@ export default class AlleVertraege extends Component {
                 }
             </ToolkitProvider>
             <ButtonGroup>
-                <button id="deleteButton" className={"btn btn-primary"} onClick={() => this.deleteVertrag()}>Löschen
+                <button id="deleteButton" className={"btn btn-primary"} onClick={() => (this.deleteVertrag())}>Löschen
                 </button>
                 <button id="editButton" className={"btn btn-success"} onClick={() => this.editVertrag()}>Bearbeiten
                 </button>

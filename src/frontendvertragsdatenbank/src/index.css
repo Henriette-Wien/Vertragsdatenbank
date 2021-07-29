@@ -14,8 +14,7 @@ code {
 
 footer {
     margin: 0;
-    position: absolute;
+    position: relative;
     bottom: 0;
-    width: content-box;
     background-color: rgba(0, 0, 0, 0.2)
 }

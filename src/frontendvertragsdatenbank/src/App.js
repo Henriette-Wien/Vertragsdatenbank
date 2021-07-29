@@ -14,7 +14,7 @@ class App extends Component {
             <div className="App">
                 <nav className="navbar navbar-expand navbar-dark bg-dark nav-tabs ">
                     <a href="/" className="navbar-brand">
-                        Contract Villain
+                        <h1>Contract Villain</h1>
                     </a>
                     <div className="navbar-nav mr-auto">
                         <li className="nav-item">
