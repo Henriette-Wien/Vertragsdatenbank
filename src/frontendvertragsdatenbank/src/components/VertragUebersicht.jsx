@@ -99,12 +99,12 @@ export default class VertragUebersicht extends Component {
                     />
                 </p>
                 <Link to="/vertrag">
-                    <button className="btn btn-light">
+                    <button id="anzeige" className="btn btn-light">
                         Verträge anzeigen
                     </button>
                 </Link>
                 <Link to="/add">
-                    <button id="NewVertrag" className="btn btn-success">
+                    <button id="newVertrag" className="btn btn-success">
                         Neuen Vertrag anlegen
                     </button>
                 </Link>

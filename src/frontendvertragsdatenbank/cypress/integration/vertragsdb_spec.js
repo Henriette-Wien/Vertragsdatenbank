@@ -29,12 +29,23 @@ describe('End-2-End-Test Vertragsdatenbank', () => {
         cy.get('button').click();
         cy.contains('Vertrag erfolgreich eingetragen');
     })
-    it('should visit homepage ', () => {
+    it('should visit homepage again ', () => {
         cy.visit('/')
         cy.contains('Einträge in der Datenbank vorhanden');
-        cy.get('button').click();
+        cy.get('button').contains("Verträge anzeigen").click();
     });
     it('should search Testvertrag', () => {
         cy.get('input[id=search-bar-0]').type('Testvertrag');
+        cy.contains("Testvertrag");
     });
+    it('should edit Testvertrag', () => {
+        cy.get('[type="radio"]').last().check()
+        cy.get('button').contains("Bearbeiten").click();
+        cy.get('button').click();
+    });
+    it('should delete Testvertrag', () => {
+        cy.visit('/vertrag')
+        cy.get('[type="radio"]').last().check()
+        cy.get('button').contains("Löschen").click();
+    })
 })
