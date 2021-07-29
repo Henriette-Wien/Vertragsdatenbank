@@ -34,23 +34,23 @@ export default class VertragUebersicht extends Component {
 
     render() {
         const {vertraege} = this.state;
-        const aktiveVertraege = vertraege.filter(function (el) {
-            return el.status === "aktiv";
+        const aktiveVertraege = vertraege.filter(function (vertragfilter) {
+            return vertragfilter.status === "aktiv";
         });
-        const Lizenzvertraege = vertraege.filter(function (el) {
-            return el.vertragsart === "Lizenzvertrag";
+        const Lizenzvertraege = vertraege.filter(function (vertragfilter) {
+            return vertragfilter.vertragsart === "Lizenzvertrag";
         });
         let anzahlLizenz = Lizenzvertraege.length;
-        const Kaufvertraege = vertraege.filter(function (el) {
-            return el.vertragsart === "Kaufvertrag";
+        const Kaufvertraege = vertraege.filter(function (vertragfilter) {
+            return vertragfilter.vertragsart === "Kaufvertrag";
         });
         let anzahlKauf = Kaufvertraege.length;
-        const Arbeitsvertraege = vertraege.filter(function (el) {
-            return el.vertragsart === "Arbeitsvertrag";
+        const Arbeitsvertraege = vertraege.filter(function (vertragfilter) {
+            return vertragfilter.vertragsart === "Arbeitsvertrag";
         });
         let anzahlArbeit = Arbeitsvertraege.length;
-        const Sonstiges = vertraege.filter(function (el) {
-            return el.vertragsart === "Sonstiges";
+        const Sonstiges = vertraege.filter(function (vertragfilter) {
+            return vertragfilter.vertragsart === "Sonstiges";
         });
         let anzahlSonstiges = Sonstiges.length;
         return (
