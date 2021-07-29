@@ -34,22 +34,22 @@ export default class VertragUebersicht extends Component {
 
     render() {
         const {vertraege} = this.state;
-        var aktiveVertraege = vertraege.filter(function (el) {
+        const aktiveVertraege = vertraege.filter(function (el) {
             return el.status === "aktiv";
         });
-        var Lizenzvertraege = vertraege.filter(function (el) {
+        const Lizenzvertraege = vertraege.filter(function (el) {
             return el.vertragsart === "Lizenzvertrag";
         });
         let anzahlLizenz = Lizenzvertraege.length;
-        var Kaufvertraege = vertraege.filter(function (el) {
+        const Kaufvertraege = vertraege.filter(function (el) {
             return el.vertragsart === "Kaufvertrag";
         });
         let anzahlKauf = Kaufvertraege.length;
-        var Arbeitsvertraege = vertraege.filter(function (el) {
+        const Arbeitsvertraege = vertraege.filter(function (el) {
             return el.vertragsart === "Arbeitsvertrag";
         });
         let anzahlArbeit = Arbeitsvertraege.length;
-        var Sonstiges = vertraege.filter(function (el) {
+        const Sonstiges = vertraege.filter(function (el) {
             return el.vertragsart === "Sonstiges";
         });
         let anzahlSonstiges = Sonstiges.length;
@@ -59,8 +59,6 @@ export default class VertragUebersicht extends Component {
                 <h1>Willkommen bei Contract Villain</h1>
                 <div>
                     <label>Ihre zuverlässige Vertragsverwaltung!</label>
-                </div>
-                <div>
                     <label>Viel Spaß!</label>
                 </div>
                 <p>
@@ -105,13 +103,16 @@ export default class VertragUebersicht extends Component {
                         Verträge anzeigen
                     </button>
                 </Link>
+                <Link to="/add">
+                    <button id="NewVertrag" className="btn btn-success">
+                        Neuen Vertrag anlegen
+                    </button>
+                </Link>
                 <p>
-                    <footer
-                        style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
+                    <footer>
                         &copy; {new Date().getFullYear()} Copyright:{' '}
                         Software Engineering Projekt von Anna-Maria Vater, Henriette Wien, Lukas Hatzenbühler und
-                        Raffael
-                        Maier
+                        Raffael Maier
                     </footer>
                 </p>
             </div>
