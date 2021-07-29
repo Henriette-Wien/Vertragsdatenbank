@@ -4,10 +4,13 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
 import cellEditFactory from 'react-bootstrap-table2-editor';
+import {Link} from "react-router-dom";
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 
 export default class AlleVertraege extends Component {
     table_element;
+
     constructor(props) {
         super(props);
         this.onChangeSearch = this.onChangeSearch.bind(this);
@@ -55,9 +58,17 @@ export default class AlleVertraege extends Component {
         // with the provided key
         return parameterList.get(key)
     }
+
+
     deleteVertrag() {
         VertragService.delete(this.table_element)
-        window.location.reload(true)
+            .then(response => {
+                console.log(response.data);
+                this.refreshList();
+            })
+            .catch(e => {
+                console.log(e);
+            });
     }
     editVertrag(){
         window.location.assign("/add?id=" + this.table_element)
@@ -138,17 +149,21 @@ export default class AlleVertraege extends Component {
             sort: true
         }, {
             dataField: 'vertragspartner.ansprechpartner.name',
-            text: 'Ansprechpartner Name',
-            sort: true
-        }, {
-            dataField: 'vertragspartner.ansprechpartner.mail',
-            text: 'Ansprechpartner Mail',
-            sort: true
-        }, {
-            dataField: 'vertragspartner.ansprechpartner.tel',
-            text: 'Ansprechpartner Telefon',
-            sort: true
-        }];
+                text: 'Ansprechpartner Name',
+                sort: true
+            }, {
+                dataField: 'vertragspartner.ansprechpartner.mail',
+                text: 'Ansprechpartner Mail',
+                sort: true
+            }, {
+                dataField: 'vertragspartner.ansprechpartner.tel',
+                text: 'Ansprechpartner Telefon',
+                sort: true
+            }, {
+                dataField: 'vertragsart',
+                text: 'Vertragsart',
+                sort: true
+            }];
 
         const {vertraege} = this.state;
         const {SearchBar} = Search;
@@ -200,17 +215,24 @@ export default class AlleVertraege extends Component {
                                 rowClasses="text-nowrap"
                                 hover
                                 striped
-                                selectRow={ selectRow }
-                                cellEdit={ cellEdit }
+                                selectRow={selectRow}
+                                cellEdit={cellEdit}
                             />
                         </div>
-                  )
-              }
-          </ToolkitProvider>
-            <div>
-                <button id="button" className={"btn btn-primary"} onClick={() => this.deleteVertrag()}>Löschen</button>
-                <button id="button" className={"btn btn-success"} onClick={() => this.editVertrag()}>Bearbeiten</button>
-            </div>
+                    )
+                }
+            </ToolkitProvider>
+            <ButtonGroup>
+                <button id="deleteButton" className={"btn btn-primary"} onClick={() => this.deleteVertrag()}>Löschen
+                </button>
+                <button id="editButton" className={"btn btn-success"} onClick={() => this.editVertrag()}>Bearbeiten
+                </button>
+                <Link to="/add">
+                    <button id="NewVertrag" className="btn btn-light">
+                        Neuen Vertrag anlegen
+                    </button>
+                </Link>
+            </ButtonGroup>
         </div>
     }
 }

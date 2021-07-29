@@ -310,7 +310,7 @@ export default class VertragAnlegen extends Component {
                 {this.state.submitted ? (
                     <div>
                         <h4>Vertrag erfolgreich eingetragen!</h4>
-                        <button className="btn btn-success" onClick={this.newAnschrift}>
+                        <button className="btn btn-success" onClick={this.newVertrag}>
                             Neuen Vertrag anlegen
                         </button>
                     </div>
@@ -323,7 +323,6 @@ export default class VertragAnlegen extends Component {
                                 type="text"
                                 className="form-control"
                                 id="name"
-                                required={true}
                                 value={this.state.name}
                                 onChange={this.onChangeName}
                                 name="name"
@@ -336,7 +335,6 @@ export default class VertragAnlegen extends Component {
                                 style={styleFormular}
                                 className="form-control"
                                 id="bedingung"
-                                required={false}
                                 value={this.state.bedingung}
                                 onChange={this.onChangeBedingung}
                                 name="bedingung"
@@ -349,7 +347,6 @@ export default class VertragAnlegen extends Component {
                                 type="date"
                                 className="form-control"
                                 id="abschlussdatum"
-                                required={true}
                                 value={this.state.abschlussdatum}
                                 onChange={this.onChangeAbschlussdatum}
                                 name="abschlussdatum"
@@ -364,7 +361,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="kosten"
-                                required={false}
                                 value={this.state.kosten}
                                 onChange={this.onChangeKosten}
                                 name="kosten"
@@ -377,7 +373,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="laufzeit"
-                                required={true}
                                 value={this.state.laufzeit}
                                 onChange={this.onChangeLaufzeit}
                                 name="laufzeit"
@@ -390,7 +385,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechperson"
-                                required={false}
                                 value={this.state.ansprechperson}
                                 onChange={this.onChangeAnsprechperson}
                                 name="ansprechperson"
@@ -403,7 +397,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartner.name"
-                                required={false}
                                 value={this.state.vertragspartnerName}
                                 onChange={this.onChangeVertragspartnerName}
                                 name="vertragspartnerName"
@@ -416,7 +409,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerStrasse"
-                                required={false}
                                 value={this.state.vertragspartnerStrasse}
                                 onChange={this.onChangeVertragspartnerStrasse}
                                 name="vertragspartnerStrasse"
@@ -429,7 +421,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerHausnummer"
-                                required={false}
                                 value={this.state.vertragspartnerHausnummer}
                                 onChange={this.onChangeVertragspartnerHausnummer}
                                 name="vertragspartnerHausnummer"
@@ -442,7 +433,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerPostleitzahl"
-                                required={false}
                                 value={this.state.vertragspartnerPostleitzahl}
                                 onChange={this.onChangeVertragspartnerPostleitzahl}
                                 name="vertragspartnerPostleitzahl"
@@ -455,7 +445,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="vertragspartnerStadt"
-                                required={false}
                                 value={this.state.vertragspartnerStadt}
                                 onChange={this.onChangeVertragspartnerStadt}
                                 name="vertragspartnerStadt"
@@ -468,7 +457,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechpartner"
-                                required={false}
                                 value={this.state.ansprechpartner}
                                 onChange={this.onChangeAnsprechpartner}
                                 name="ansprechpartner"
@@ -481,7 +469,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="ansprechpartner"
-                                required={true}
                                 value={this.state.mail}
                                 onChange={this.onChangeMail}
                                 name="mail"
@@ -494,7 +481,6 @@ export default class VertragAnlegen extends Component {
                                 type="textarea"
                                 className="form-control"
                                 id="telefon"
-                                required={false}
                                 value={this.state.telefon}
                                 onChange={this.onChangeTelefon}
                                 name="telefon"
