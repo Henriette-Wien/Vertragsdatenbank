@@ -9,7 +9,7 @@ function Archiv() {
                 <label>Hier folgt die Anzeige aller archivierten Verträge</label>
             </div>
             <div>
-                <label>Wird noch entwickelt</label>
+                <label>Wird nicht mehr umgesetzt- Filterung der Tabelle Alle Verträge möglich</label>
             </div>
         </div>
     )
