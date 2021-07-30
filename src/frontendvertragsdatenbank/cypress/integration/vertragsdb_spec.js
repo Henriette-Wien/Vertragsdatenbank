@@ -6,12 +6,12 @@
 describe('End-2-End-Test Vertragsdatenbank', () => {
 
     it('should visit homepage ', () => {
-        cy.visit('/')
+        cy.visit('/');
         cy.contains('Einträge in der Datenbank vorhanden');
     });
     it('should search Vertrag', () => {
-        cy.request('GET', '/vertrag', {})
-        cy.visit('/vertrag')
+        cy.request('GET', '/vertrag', {});
+        cy.visit('/vertrag');
         cy.get('input[id=search-bar-0]').type('Google');
         cy.contains('Google');
     });
